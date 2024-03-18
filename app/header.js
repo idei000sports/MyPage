@@ -9,10 +9,10 @@ export default function Header() {
                         <p>...</p>
                     </div>
                     <div className="col text-center text-white">
-                        <h1 className="">ASSHOLE</h1>
+                        <h1 className="aaa">ASSHOLE</h1>
                     </div>
                     <div class="col text-end text-white">
-                        <p className="">///</p>
+                        <p className="aaa">記号</p>
                     </div>
                 </div>
             </div>

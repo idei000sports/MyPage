@@ -5,7 +5,6 @@
 .bg01 {
     background: url(/top/me.jpg) no-repeat;
     background-size: cover;
-    //background-attachment: fixed;
     background-position: center;
     min-height: 100vh;
 }
@@ -13,7 +12,6 @@
 .bg02 {
     background: url(/top/me2.jpg) no-repeat;
     background-size: cover;
-    //background-attachment: fixed;
     background-position: center;
     min-height: 100vh;
 }
