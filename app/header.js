@@ -1,45 +1,55 @@
+"use client"
+
 import Link from "next/link";
+import Script from 'next/script'
+import { useState } from 'react';
+
 
 export default function Header() {
+
+    const [isClose, setIsClose] = useState(true);
+
+    const closeClick = () => {
+        setIsClose(!isClose);
+    };
+
+
     return (
-        <header className="fixed-top">
-            <div className="container">
-                <div className="row">
+        <>
+            <div className={`container-fluid d-flex fixed-top mynav ${isClose ? "d-none" : ""}`}>
+                <div className="row align-items-center rowkun text-white">
                     <div className="col"></div>
-                    <div className="col text-center">
-                        <h1 className="text-white ">ASSHOLE</h1>
+                    <div className="col">
+                        <h1>ケツ</h1>
+                        <h3>尻肉</h3>
+                        <h3>肛門</h3>
+                        <h3>ケツ</h3>
                     </div>
-                    <div className="col text-end">
-                    <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-                        <i class="h1 text-white bi bi-list"></i>
-                    </button>
+                    <div className="col">
+                        <h1>股間</h1>
+                        <h3>チンポ</h3>
+                        <h3>チン毛</h3>
+                        <h3>キンタマ</h3>
                     </div>
+                    <div className="col"></div>
                 </div>
-                
+
             </div>
 
-            <nav className="navbar fixed-top">
+            <header className="fixed-top text-white">
                 <div className="container">
-                    <a className="navbar-brand" href="#"></a>
-                    <div className="offcanvas offcanvas-end" tabIndex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-                        <div className="offcanvas-header">
-                            <h5 className="offcanvas-title" id="offcanvasNavbarLabel">ASSHOLE</h5>
-                            <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    <div className="row">
+                        <div className="col"></div>
+                        <div className="col text-center">
+                            <h1 className="logo">ASSHOLE</h1>
                         </div>
-                        <div className="offcanvas-body">
-                            <ul>
-                                <li>けつ</li>
-                                <li>けつ</li>
-                                <li>けつ</li>
-                                <li>けつ</li>
-                                <li>けつ</li>
-                                <li>けつ</li>
-                                <li>けつ</li>
-                            </ul>
+                        <div className="col text-end">
+                            <i className={`logo bi ${isClose ? "bi-list" : "bi-x-circle"}`} onClick={closeClick}></i>
                         </div>
                     </div>
                 </div>
-            </nav>
-        </header >
+            </header >
+
+        </>
     );
 }

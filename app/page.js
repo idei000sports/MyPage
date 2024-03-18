@@ -5,6 +5,8 @@ export default function Home() {
   return (
     <main>
 
+
+
       <div className="container-fluid bg01 main-content">
 
         <div className="container text-white">
@@ -16,7 +18,7 @@ export default function Home() {
           <div className="row">
             <div className="col">
               <h2>歯くそ男VS歯周病</h2>
-              <h2>尻も積もれば糞となる ゲーテ</h2>
+              <h2>尻も積もれば糞となる</h2>
             </div>
           </div>
         </div>
