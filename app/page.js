@@ -7,9 +7,9 @@ export default function Home() {
 
 
 
-      <div className="container-fluid bg01 main-content">
+      <div className="container-fluid bg01">
 
-        <div className="container text-white">
+        <div className="container text-white content">
           <div className="row">
             <div className="col">
               <h1>尻毛のクソいじり</h1>
@@ -25,9 +25,9 @@ export default function Home() {
       </div>
 
 
-      <div className="container-fluid bg02 main-content">
+      <div className="container-fluid bg02">
 
-        <div className="container text-white">
+        <div className="container text-white content">
           <div className="row">
             <div className="col">
               <h1>下痢を治しなさい</h1>

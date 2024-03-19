@@ -1,3 +1,4 @@
+
 .main-content {
     padding-top: 4em;
 }
@@ -26,14 +27,25 @@ header {
 }
 
 .logo {
-    font-size: 4em;
+    font-size: 3em;
     text-shadow: 0px 0px 18px rgba(255, 255, 255, 1);
+    color: white;
+
+
+
+}
+.logo-wrapper {
+
+
 }
 
 
 .main-content {
-    padding-top: 8em;
-    
+
+}
+
+.content {
+    padding-top: 10em;
 }
 
 .mynav {
@@ -46,7 +58,24 @@ header {
 }
 
 .rowkun {
-    //background-color: blue;
     width: 100%;
     
 }
+
+.scroll-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    
+    cursor: pointer;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .scroll-top a {
+    text-decoration: none;
+    color: black;
+  }
+

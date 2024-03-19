@@ -36,16 +36,20 @@ export default function Header() {
 
             </div>
 
-            <header className="fixed-top text-white">
+            <header className="fixed-top">
                 <div className="container">
                     <div className="row">
-                        <div className="col"></div>
-                        <div className="col text-center">
-                            <h1 className="logo">ASSHOLE</h1>
+                        <div className="col-2 logo-wrapper">
+
                         </div>
-                        <div className="col text-end">
+                        <div className="col-8 text-center logo-wrapper">
+                            <span className="logo">ASSHOLE</span>
+                        </div>
+                        <div className="col-2 text-end logo-wrapper">
                             <i className={`logo bi ${isClose ? "bi-list" : "bi-x-circle"}`} onClick={closeClick}></i>
                         </div>
+
+
                     </div>
                 </div>
             </header >
