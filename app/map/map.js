@@ -46,6 +46,7 @@ export default function Map() {
             setPopups(p);
             */
            setOrigins(json);
+           console.log("origin 読み込んだ")
         };
         fetchNotes();
     }, []);
@@ -63,6 +64,7 @@ export default function Map() {
             }
             */
             setCities(json);
+            console.log("city 読み込んだ")
         };
         fetchNotes();
     }, []);
