@@ -26,6 +26,7 @@ async function getAllCities() {
     return cities;
 }
 
+/*
 async function isUniqueCity(country, state, county) {
     //nullじゃないとtrue　かぶってない=true
     const city = await prisma.city.findFirst({ where: { country: country, state: state, county: county } });
@@ -40,13 +41,13 @@ async function isUniqueCity(country, state, county) {
     }
     return check;
 }
-
+*/
 
 export async function POST(req) {
     //const { country, state, county, lattitude, longitude } = await req.json();
     const uscounties = await req.json();
 
-
+    /*
     let arr = [];
 
     for(let i = 0; i < uscounties.length; i++){
@@ -61,24 +62,28 @@ export async function POST(req) {
             //console.log("false/かぶってる");
         }
     }
+    */
 
+    for (let i = 0; i < uscounties.length; i++) {
 
-    for(let i = 0; i < arr.length; i++){
-        await prisma.city.create({
-            data: {
-                country: arr[i].country,
-                state: arr[i].state,
-                county: arr[i].county,
-                lattitude: parseFloat(arr[i].lattitude),
-                longitude: parseFloat(arr[i].longitude),
-            },
-        })
-
-        console.log(`実行中 ${i} / ${arr.length - 1}`);
+        try {
+            await prisma.city.create({
+                data: {
+                    country: uscounties[i].country,
+                    state: uscounties[i].state,
+                    county: uscounties[i].county,
+                    lattitude: parseFloat(uscounties[i].lattitude),
+                    longitude: parseFloat(uscounties[i].longitude),
+                },
+            })
+        } catch (e) {
+            console.log("被りorエラー")
+        }
+        console.log(`実行中 ${i} / ${uscounties.length - 1}`);
     }
 
     console.log("完了");
-    
+
 
 
     const cities = await getAllCities();
