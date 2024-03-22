@@ -7,7 +7,7 @@ export default function OriginsAdd() {
     const [dataArray, setDataArray] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/origins.csv`)
+        fetch(`/origins.csv`)
             .then((res) => {
                 if (!res.ok) {
                     console.log('正常にリクエストを処理できませんでした。');
@@ -52,7 +52,7 @@ export default function OriginsAdd() {
 
         //for (let i = 0; i < 2/*dataArray.length*/; i++) {
             // APIのURL
-            const url = "http://localhost:3000/api/origin";
+            const url = "/api/origin";
             // リクエストパラメータ
             const params = {
                 method: "POST",

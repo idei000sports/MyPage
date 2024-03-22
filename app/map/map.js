@@ -6,6 +6,7 @@ import { MapContainer, TileLayer, useMap, Marker, Popup, Tooltip, useMapEvents }
 import { useState, useEffect, useCallback } from 'react';
 import React from "react";
 import OriginsAdd from "./origins_add";
+import Add from "./add"
 
 //import returnSelect from "./db";
 
@@ -149,6 +150,7 @@ export default function Map() {
 
     return (
         <div>
+            <Add />
             <OriginsAdd />
             <h1 className="test">asfasa</h1>
             <p>lat: {nowPosition.lat} lng : {nowPosition.lng}</p>

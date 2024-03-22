@@ -11,7 +11,7 @@ export default function Add() {
     const [dataArray, setDataArray] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/uscounties.csv`)
+        fetch(`/uscounties.csv`)
             .then((res) => {
                 if (!res.ok) {
                     console.log('正常にリクエストを処理できませんでした。');
@@ -51,7 +51,7 @@ export default function Add() {
 
         //for (let i = 0; i < 2/*dataArray.length*/; i++) {
             // APIのURL
-            const url = "http://localhost:3000/api/city";
+            const url = "/api/city";
             // リクエストパラメータ
             const params = {
                 method: "POST",
