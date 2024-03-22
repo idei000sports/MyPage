@@ -12,7 +12,7 @@ import OriginsAdd from "./origins_add";
 
 
 
-export default function map() {
+export default function Map() {
     const [map, setMap] = useState(null)
     const [zoom, setZoom] = useState(13);
     const [center, setCenter] = useState([40.7035, -73.8196]);
