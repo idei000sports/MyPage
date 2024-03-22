@@ -27,7 +27,7 @@ model Origin {
   dissolution       Int
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-
+  @@unique([name, county])
 } 
 
 model City {
@@ -39,5 +39,7 @@ model City {
 
     lattitude Float
     longitude Float
+
+    @@unique([country, state, county])
 
 }
