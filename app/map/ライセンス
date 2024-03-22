@@ -1,0 +1,19 @@
+https://github.com/kelvins/US-Cities-Database/tree/main
+
+
+
+こっち使った
+Creative Commons Attribution 4.0
+https://simplemaps.com/data/us-cities
+
+
+
+タイル
+Carto Light ("Positron")
+general map
+Required attribution: "Map tiles by Carto, under CC BY 3.0. Data by OpenStreetMap, under ODbL."
+
+commercial, registration required, uses Natural Earth at low zooms
+	variants available: all, nolabels, only_labels
+
+    https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png

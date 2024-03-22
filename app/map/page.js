@@ -1,9 +1,14 @@
 "use client"
-
 import dynamic from "next/dynamic";
 import React from "react";
+import Add from "./add"
 
 export default function Home() {
+
+    //const [map, setMap] = useState(null)
+
+
+
     const Map = React.useMemo(
         () =>
             dynamic(() => import("./map"), {
@@ -16,7 +21,15 @@ export default function Home() {
 
     return (
         <div>
+
             <Map />
+
+
         </div>
     )
 }
+/*
+
+
+
+*/
