@@ -17,3 +17,7 @@ commercial, registration required, uses Natural Earth at low zooms
 	variants available: all, nolabels, only_labels
 
     https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png
+
+
+サジェストのやつ
+npm i @tarekraafat/autocomplete.js

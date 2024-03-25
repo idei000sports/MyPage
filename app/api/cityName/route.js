@@ -22,7 +22,7 @@ export const GET = async (req) => {
 }
 
 async function getAllCities() {
-    const cities = await prisma.city.findMany();
+    const cities = await prisma.cityName.findMany();
     return cities;
 }
 
@@ -67,7 +67,7 @@ export async function POST(req) {
     for (let i = 0; i < uscounties.length; i++) {
 
         try {
-            await prisma.city.create({
+            await prisma.cityName.create({
                 data: {
                     country: uscounties[i].country,
                     state: uscounties[i].state,

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@prisma/client": "^5.11.0",
+    "@tarekraafat/autocomplete.js": "^10.2.7",
     "@vercel/postgres": "^0.7.2",
     "better-sqlite3": "^9.4.3",
     "bootstrap": "^5.3.3",

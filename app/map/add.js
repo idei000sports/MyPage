@@ -51,7 +51,7 @@ export default function Add() {
 
         //for (let i = 0; i < 2/*dataArray.length*/; i++) {
             // APIのURL
-            const url = "/api/city";
+            const url = "/api/cityName";
             // リクエストパラメータ
             const params = {
                 method: "POST",

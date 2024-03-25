@@ -53,7 +53,7 @@ export default function Map() {
 
     useEffect(() => {
         const fetchNotes = async () => {
-            const response = await fetch('/api/city');
+            const response = await fetch('/api/cityName');
             const json = await response.json();
 
             const p = [];
@@ -92,8 +92,8 @@ export default function Map() {
             for (let city in cities) {
                 let latの差 = nowPosition.lat - cities[city].lattitude;
                 let lngの差 = nowPosition.lng - cities[city].longitude;
-                let 最小範囲 = -5;
-                let 最大範囲 = 5;
+                let 最小範囲 = -10;
+                let 最大範囲 = 10;
                 if (最小範囲 < latの差 && latの差 < 最大範囲 && 最小範囲 < lngの差 && lngの差 < 最大範囲) {
                     現在地周辺.push(
                         cities[city]
@@ -104,7 +104,7 @@ export default function Map() {
             for(let city in 現在地周辺){
                 for(let origin in origins){
                     //console.log(origins[origin]);
-                    if(現在地周辺[city].county == origins[origin].county){
+                    if(現在地周辺[city].county == origins[origin].county && 現在地周辺[city].state == origins[origin].state){
 
                         let obj = {
                             name: origins[origin].name,
@@ -126,7 +126,7 @@ export default function Map() {
             setTestPopup(表示したいバンド.map((item, index) => (
                 <Marker
                     icon={L.divIcon({
-                        html: `${item.name} ${item.county} ${item.formation}`,
+                        html: `${item.name} ${item.formation}-`,
                         className: 'divicon1',
                         //iconSize: [80, 30],
                         //iconAnchor: [0, 0],
@@ -152,9 +152,6 @@ export default function Map() {
 
     return (
         <div>
-            <Add />
-            <OriginsAdd />
-            <h1 className="test">asfasa</h1>
             <p>lat: {nowPosition.lat} lng : {nowPosition.lng}</p>
             <MapContainer
                 center={center}

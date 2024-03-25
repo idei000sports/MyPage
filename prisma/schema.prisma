@@ -1,14 +1,11 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
-  url = env("POSTGRES_PRISMA_URL") // uses connection pooling
-  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
 model notes {
@@ -18,28 +15,28 @@ model notes {
 }
 
 model Origin {
-  id        Int       @id @default(autoincrement())
-  name      String
-  country String
-  state String
-  county String
-  formation     Int
-  dissolution       Int
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id          Int      @id @default(autoincrement())
+  name        String
+  country     String
+  state       String
+  county      String
+  city        String
+  formation   Int
+  dissolution Int
+  genres      String[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
   @@unique([name, county])
-} 
+}
 
-model City {
-    id        Int       @id @default(autoincrement())
-    country String
-    state String
-    county String
+model CityName {
+  id        Int    @id @default(autoincrement())
+  country   String
+  state     String
+  county    String
+  lattitude Float
+  longitude Float
 
-
-    lattitude Float
-    longitude Float
-
-    @@unique([country, state, county])
-
+  @@unique([country, state, county])
 }

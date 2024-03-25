@@ -33,6 +33,8 @@ export default function OriginsAdd() {
                         county: s[3],
                         formation: Number(s[4]),
                         dissolution: Number(s[5]),
+                        genres:[s[6],s[7],s[8]]
+
                     }
 
 
@@ -72,7 +74,7 @@ export default function OriginsAdd() {
 
     return (
         <div>
-            <button onClick={fetchAsyncAddOrigin}>バンドデータ追加</button>
+
 
             <h1>add page</h1>
 

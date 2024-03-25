@@ -18,6 +18,7 @@ CREATE TABLE "Origin" (
     "dissolution" INTEGER NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
+    "genres" TEXT[],
 
     CONSTRAINT "Origin_pkey" PRIMARY KEY ("id")
 );
