@@ -148,11 +148,10 @@ export default function Map() {
 
     }, [nowPosition]);
 
-
+    //<p>lat: {nowPosition.lat} lng : {nowPosition.lng}</p>
 
     return (
         <div>
-            <p>lat: {nowPosition.lat} lng : {nowPosition.lng}</p>
             <MapContainer
                 center={center}
                 zoom={zoom}
