@@ -163,7 +163,7 @@ export default function Map() {
                     icon={L.divIcon({
                         html: `${item.names}`,
                         className: 'divicon1',
-                        iconSize: [100,10], 
+                        iconSize: [150,10], 
                         //iconSize: [80, 30],
                         //iconAnchor: [0, 0],
                         //popupAnchor: [0, -10]
