@@ -8,6 +8,8 @@ import React from "react";
 import OriginsAdd from "./origins_add";
 import Add from "./add"
 
+
+
 //import returnSelect from "./db";
 
 
@@ -15,7 +17,7 @@ import Add from "./add"
 
 export default function Map() {
     const [map, setMap] = useState(null)
-    const [zoom, setZoom] = useState(13);
+    const [zoom, setZoom] = useState(6);
     const [center, setCenter] = useState([40.7035, -73.8196]);
 
     const [popups, setPopups] = useState([]);
@@ -45,8 +47,8 @@ export default function Map() {
             }
             setPopups(p);
             */
-           setOrigins(json);
-           console.log("origin 読み込んだ")
+            setOrigins(json);
+            console.log("origin 読み込んだ")
         };
         fetchNotes();
     }, []);
@@ -88,7 +90,7 @@ export default function Map() {
         let 表示したいバンド = []
 
         if (nowPosition.lat != undefined && nowPosition.lng != undefined) {
-            
+
             for (let city in cities) {
                 let latの差 = nowPosition.lat - cities[city].lattitude;
                 let lngの差 = nowPosition.lng - cities[city].longitude;
@@ -100,11 +102,20 @@ export default function Map() {
                     );
                 }
             }
-            
-            for(let city in 現在地周辺){
-                for(let origin in origins){
+
+            for (let city in 現在地周辺) {
+
+                let objct = {
+                    county: 現在地周辺[city].county,
+                    lattitude: 現在地周辺[city].lattitude,
+                    longitude: 現在地周辺[city].longitude,
+                    bandsArr: []
+                }
+
+
+                for (let origin in origins) {
                     //console.log(origins[origin]);
-                    if(現在地周辺[city].county == origins[origin].county && 現在地周辺[city].state == origins[origin].state){
+                    if (現在地周辺[city].county == origins[origin].county && 現在地周辺[city].state == origins[origin].state) {
 
                         let obj = {
                             name: origins[origin].name,
@@ -113,21 +124,46 @@ export default function Map() {
                             county: origins[origin].county,
                             formation: origins[origin].formation,
                             dissolution: origins[origin].dissolution,
-                            lattitude: 現在地周辺[city].lattitude,
-                            longitude: 現在地周辺[city].longitude,
-
+                            //lattitude: 現在地周辺[city].lattitude,
+                            //longitude: 現在地周辺[city].longitude,
                         }
-                        表示したいバンド.push(obj);
+                        objct.bandsArr.push(obj);
                     }
                 }
+
+                if (objct.bandsArr.length != 0) {
+                    //console.log(objct)
+                    表示したいバンド.push(objct);
+                }
+
+                //console.log(objct)
             }
 
+            //console.log(表示したいバンド);
 
+            let popups = [];
+
+
+            for(let i = 0; i < 表示したいバンド.length; i++){
+                表示したいバンド[i].names = "";
+                for (let j = 0; j < 表示したいバンド[i].bandsArr.length; j++){
+                    表示したいバンド[i].names = 表示したいバンド[i].names + 表示したいバンド[i].bandsArr[j].name + "," + "<br>"
+                }
+
+            }
+
+            //console.log(表示したいバンド);
+
+
+
+            
             setTestPopup(表示したいバンド.map((item, index) => (
+                
                 <Marker
                     icon={L.divIcon({
-                        html: `${item.name} ${item.formation}-`,
+                        html: `${item.names}`,
                         className: 'divicon1',
+                        iconSize: [100,10], 
                         //iconSize: [80, 30],
                         //iconAnchor: [0, 0],
                         //popupAnchor: [0, -10]
@@ -137,8 +173,10 @@ export default function Map() {
                 >
 
                 </Marker>
-            )))
+                    
 
+            )))
+            
         }
 
 
