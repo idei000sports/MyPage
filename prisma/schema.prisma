@@ -40,3 +40,13 @@ model CityName {
 
   @@unique([country, state, county])
 }
+
+
+model Words {
+  id        Int    @id @default(autoincrement())
+  word      String
+  kana      String
+  boin      String
+  hinshi    String
+  createdAt   DateTime @default(now())
+}
