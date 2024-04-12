@@ -1,271 +1,155 @@
 
 "use client"
-
-import boin from '../prisma_test/transformTextToBoin'
-
 import { useState, useEffect } from 'react'
+import { Suspense } from 'react';
+import Word from "./Word"
+import transformTextToBoin from "./transformTextToBoin"
 
-
-//taliwind
 
 export default function Home() {
 
-    const [words, setWords] = useState("");
-    
-    useEffect(() => {
-        const fetchNotes = async () => {
-            const response = await fetch('/api/words?id=11');
-            const json = await response.json();
-
-            setWords(json);
-            console.log("words 読み込んだ")
-        };
-        fetchNotes();
-    }, []);
-    
-
-    //モード切り替えのセレクター
-    const options = [
-        { value: 'tango', label: '単語' },
-        { value: 'ichibu', label: '一部' },
-    ]
-
-
-    //const [text, setText] = useState("");
-    /*
-    const [isClicked, setClick] = useState(false)
-
-
     const [word, setWord] = useState("");
-    const [wordList, setWordList] = useState([]);
-
-    //モード情報
-    const [mode, setMode] = useState("tango");
-
-    const [searchWord, setSearchWord] = useState("");
+    const [boin, setBoin] = useState("");
+    const [words, setWords] = useState([]);
+    const [ichibuMode, setIchibuMode] = useState(false);
+    const [nowMode, setNowMode] = useState("単語モード");
     const [ichibuText, setIchibuText] = useState([]);
-    const [info, setInfo] = useState("");
-    const [sample, setSample] = useState("");
 
-    */
+    const [loadChu, setLoadChu] = useState("");
 
-    //入力情報取得
-    /*
-    const onChangeWord = ((e) => {
+    const [formText, setFormText] = useState("");
 
 
-        console.log(words);
-        if (mode == "tango") {
-            //単語モードなので受け取ったテキストそのままで動作
-            console.log("tangoモード動作")
-            setText(e.target.value);
-            setSearchWord(boin(e.target.value));
-        } else if (mode == "ichibu") {
+    const onClickIchibu = () => {
+        setIchibuMode(!ichibuMode)
+    }
+
+    const onChangeText = (e) => {
+        setWord(e.target.value);
+    };
+
+
+    useEffect(() => {
+        setNowMode(ichibuMode ? "一部モード" : "単語モード");
+        setFormText(ichibuMode ? "検索したい部分のみを「」で囲んでください（犬も歩けば「ぼう」に当たる）" : "ひらがな/カタカナで入力してください");
+
+        if (ichibuMode == true) {
             //一部モードなので受け取ったテキストの[]内を取得
             console.log("ichibuモード動作");
             let seiki = new RegExp(/「.+?」/);
             let s = "";
-            if (seiki.exec(e.target.value) != null) {
+            if (seiki.exec(word) != null) {
+                let obj = {
+                    mae: "",
+                    ato: "",
+                }
                 //正規表現で周りを削除
-                s = seiki.exec(e.target.value)[0]
+                s = seiki.exec(word)[0]
                 //[]を外す
                 s = s.slice(1);
                 s = s.slice(0, -1);
-                setSearchWord(boin(s));
+                setBoin(transformTextToBoin(s));
                 console.log("[]の中" + s);
 
                 seiki = new RegExp(/(.*)(?=「)/);
-                let mae = seiki.exec(e.target.value)[0];
-                console.log("[]の前" + mae);
-
+                obj.mae = seiki.exec(word)[0];
                 seiki = new RegExp(/(?<=」)(.*)/);
-                let ato = seiki.exec(e.target.value)[0];
-                console.log("[]の後" + ato);
+                obj.ato = seiki.exec(word)[0];
 
-                let arr = [mae, ato];
-                setIchibuText(arr);
+
+                setIchibuText(obj);
             }
-            setText(s);
+            //setWord(s);
+        } else {
+            setBoin(transformTextToBoin(word));
+            setIchibuText({ mae: "", ato: "" })
         }
-    })
-
-    */
 
 
+    }, [word, ichibuMode]);
 
 
-    /*
+    const searchFromAPI = async () => {
+        //suspenstion?を使いたい
 
-    const onClickMode = useCallback((now_mode) => {
-        if (now_mode == "ichibu") {
-            setMode("tango");
-            setIchibuText(["", ""])
-            setInfo("ひらがな/カタカナで入力してください")
-            setSample("だじゃれ");
-            setClick(true);
+        setLoadChu("ロード中");
+        setWords([]);
 
-        } else if (now_mode == "tango") {
-            setMode("ichibu");
-            setInfo("変換したいひらがな/カタカナを「」でくくってください")
-            setSample("「いしばし」を叩いて渡る")
-            setClick(false);
-        }
-    }, []);
-    */
-
-    /*
-    //検索ワードから検索する
-    useEffect(() => {
-        db(searchWord);
-    }, [searchWord])//useEffect
-    */
-
-    /*
-    useEffect(() => {
-        const fetchNotes = async () => {
-
-            const params = {
-                method: "TEST",
-                // JSON形式のデータのヘッダー
-                // リクエストボディ
-                body: JSON.stringify({ id: "123", name: "しゅう" })
-            };
-
-
-            const response = await fetch(`/api/words`);
-            console.log("origin 読み込んだ")
-        };
-        fetchNotes();
-    }, [searchWord]);
-    */
-
-
-    /*
-    //db接続(母音一致)
-    async function db(boin) {
-        const { data: words, error } = await supabase
-            .from("test_kanas")
-            .select('*').eq('boin', boin)
-        //console.log(t);
-        setWordList(words);
-    }
-    */
-    //const [dataArray, setDataArray] = useState([]);
-    /*
-        useEffect(() => {
-            fetch(`/words.csv`)
-                .then((res) => {
-                    if (!res.ok) {
-                        console.log('正常にリクエストを処理できませんでした。');
-                    }
-                    return res.text();
-                })
-                .then((csv_data) => {
-                    const data_string = csv_data.split('\r\n');
-    
-                    //csvのヘッダを削除
-                    data_string.shift();
-                    const data_array = []
-    
-                    for (let i = 0; i < data_string.length; i++) {
-                        let s = data_string[i].split(',');
-    
-                        let obj = {
-                            word: s[0],
-                            kana: s[1],
-                            boin: s[2],
-                            hinshi: s[3],
-                        }
-    
-    
-                        data_array[i] = obj;
-    
-                    }
-                    setDataArray(data_array);
-                    console.log("準備完了");
-    
-                    console.log(data_array.length)
-                })
-                .catch((error) => {
-                    console.log(`エラーが発生しました。\n${error}`);
-                })
-        }, [])
-    */
-
-
-    /*
-    const fetchAsyncAddWords = async () => {
-        console.log("fetchasyncaddword")
-
-        // APIのURL
-        const url = "/api/words";
-        // リクエストパラメータ
-        const params = {
-            method: "POST",
-            // JSON形式のデータのヘッダー
+        const response = await fetch('/api/words', {
+            method: 'POST',
             headers: {
-                "Content-Type": "application/json",
+                'Content-Type': 'application/json',
             },
-            // リクエストボディ
-            body: JSON.stringify(dataArray)
-        };
+            body: JSON.stringify({ boin: boin }),
+        });
 
-        // APIへのリクエスト
-        await fetch(url, params);
-        //}
+        const getted = await response.json();
+        setWords(getted.length != 0 ? getted : [{id: 0, word: "結果なし"}]);
+        setLoadChu("");
+
     };
 
-    */
 
-    /*
+
+
+
+
     return (
-
         <>
 
-            
-            <button onClick={fetchAsyncAddWords}>wordsデータ追加</button>
-            <div className="container pt-4">
-                <div className="row pt-4">
-                    <div className="col">
-                        <button onClick={() => { onClickMode("tango") }}>単語</button>
-                    </div>
-                    <div className="col">
-                        <button onClick={() => { onClickMode("ichibu") }}>一部</button>
-
-                        <button onClick={() => { onClickMode(mode) }}>{mode}</button>
-                    </div>
-                </div>
-
+            <div className="container mt-4 mb-4">
                 <div className="row">
-                    <div className="col">
-                        <p>{info}</p>
-                        <textarea type="text" id="textbox" name="input" onChange={onChangeWord} placeholder={sample} ></textarea>
-                    </div>
-                </div>
-                <div className="row" >
-                    <div className="col">
-
-                        <ul className="w-full">
-                            <li>{text}</li>
-                            {wordList.map((item, index) => (
-                                <li key={index}>
-                                    <span>{ichibuText[0]}</span><span>  </span><ruby>{item.word}<rt>{item.kana}</rt></ruby><span> </span>  <span className="text-xl">{ichibuText[1]}</span>
-                                </li>
-                            ))}
-                        </ul>
+                    <div className="col text-center">
+                        <p className="h1">ダジャレ替え歌作成機</p>
 
                     </div>
                 </div>
             </div>
+            <div className="container mt-4 mb-4">
+                <div className="row">
+                    <div className="col">
+                        <div className="form-check form-switch">
+                            <input className="form-check-input" type="checkbox" role="switch" onChange={onClickIchibu}></input>
+                            <label className="form-check-label">{nowMode}</label>
+                        </div>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-8">
+                        <div className="form-floating mb-3">
+                            <input type="text" className="form-control" id="floatingInput" placeholder="" onChange={onChangeText}></input>
+                            <label htmlFor="floatingInput">{formText}</label>
+                        </div>
+                    </div>
+                    <div className="col-4">
+                        <button className="form-control" onClick={searchFromAPI}>検索</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <p>{loadChu}</p>
+
+
+            <div className="container">
+                <div className="row">
+                    <div className="col">
+
+                        {words.map((word) => (
+                            <div key={word.id}>
+                                <ul className="list-group list-group-flush">
+                                    <Word word={word} ichibuText={ichibuText} />
+                                </ul>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
+
+
 
         </>
     )
-    */
 
-    return (
-        <>
-
-            <p>aaa</p>
-        </>
-    )
 }

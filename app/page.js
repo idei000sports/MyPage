@@ -12,7 +12,15 @@ export default function Home() {
         <div className="container text-white content">
           <div className="row">
             <div className="col">
-              <h1>te</h1>
+              <ul>
+                <li>
+                  <a className="h1" href="/dajare">ダジャレ</a>
+                </li>
+                <li>
+                  <a className="h1" href="/map">マップ」</a>
+                </li>
+              </ul>
+
             </div>
           </div>
           <div className="row">
