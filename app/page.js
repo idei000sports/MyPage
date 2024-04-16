@@ -19,6 +19,10 @@ export default function Home() {
                 <li>
                   <a className="h1" href="/map">マップ」</a>
                 </li>
+
+                <li>
+                  <a className="h1" href="/synth">synth</a>
+                </li>
               </ul>
 
             </div>

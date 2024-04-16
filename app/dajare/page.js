@@ -31,10 +31,10 @@ export default function Home() {
 
     useEffect(() => {
         setNowMode(ichibuMode ? "一部モード" : "単語モード");
-        setFormText(ichibuMode ? "検索したい部分のみを「」で囲んでください（犬も歩けば「ぼう」に当たる）" : "ひらがな/カタカナで入力してください");
+        setFormText(ichibuMode ? "犬も歩けば「ぼう」に当たる" : "ひらがな/カタカナで入力してください");
 
         if (ichibuMode == true) {
-            //一部モードなので受け取ったテキストの[]内を取得
+            //一部モードなので受け取ったテキストの「」内を取得
             console.log("ichibuモード動作");
             let seiki = new RegExp(/「.+?」/);
             let s = "";
@@ -69,12 +69,8 @@ export default function Home() {
     }, [word, ichibuMode]);
 
 
-    const searchFromAPI = async () => {
-        //suspenstion?を使いたい
 
-        setLoadChu("ロード中");
-        setWords([]);
-
+    async function searchFromAPI(){
         const response = await fetch('/api/words', {
             method: 'POST',
             headers: {
@@ -83,11 +79,19 @@ export default function Home() {
             body: JSON.stringify({ boin: boin }),
         });
 
-        const getted = await response.json();
+        return await response.json();
+    }
+
+    const search = async () => {
+        setLoadChu("ロード中");
+        setWords([]);
+
+        const getted = await searchFromAPI();
         setWords(getted.length != 0 ? getted : [{id: 0, word: "結果なし"}]);
+
         setLoadChu("");
 
-    };
+    }
 
 
 
@@ -122,7 +126,7 @@ export default function Home() {
                         </div>
                     </div>
                     <div className="col-4">
-                        <button className="form-control" onClick={searchFromAPI}>検索</button>
+                        <button className="form-control" onClick={search}>検索</button>
                     </div>
                 </div>
 
