@@ -17,45 +17,25 @@ export const connect = async () => {
 
 // データベースからデータを取得する
 export const GET = async (req) => {
-    /*
-    console.log("getの中")
-    try {
-        await connect();
-        const notes = await prisma.notes.findMany();
-        console.log("tryの中");
 
-        return NextResponse.json({ notes }, { status: 200 })
-
-    } catch (error) {
-        return NextResponse.json({ messeage: "Error" }, { status: 500 })
-
-    } finally {
-        //必ず実行する
-        await prisma.$disconnect();
-    }
-    */
-    const notes = await getAllNotes();
+    const notes = await prisma.notes.findMany();
     return NextResponse.json(notes);
 }
 
-async function getAllNotes() {
-    const notes = await prisma.notes.findMany();
-    return notes;
-}
-/*
-export async function POST(request: ) {
-    const { content } = await request.json();
-  
-    await prisma.notes.create({
+
+
+
+export async function POST(request) {
+
+    console.log("POSTにきてる")
+    const json  = await request.json();
+    const response = await prisma.notes.create({
       data: {
-        content: content,
+        content: json.content
       },
     });
+    
   
-    const notes = await getAllNotes();
-    return NextResponse.json(notes);
+    return NextResponse.json(response);
   }
-*/
-export const POST = async (req) => {
-    console.log("postの中");
-}
+

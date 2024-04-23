@@ -23,6 +23,9 @@ export default function Home() {
                 <li>
                   <a className="h1" href="/synth">synth</a>
                 </li>
+                <li>
+                  <a className="h1" href="/test">test</a>
+                </li>
               </ul>
 
             </div>

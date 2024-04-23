@@ -4,6 +4,8 @@ import { PrismaClient } from "@prisma/client";
 //インスタンスを作成
 const prisma = new PrismaClient();
 
+
+
 // データベースに接続する関数
 export const connect = async () => {
     try {
@@ -22,7 +24,7 @@ export const GET = async (req) => {
 }
 
 async function getAllCities() {
-    const cities = await prisma.cityName.findMany();
+    const cities = await prisma.county.findMany();
     return cities;
 }
 
@@ -46,45 +48,26 @@ async function isUniqueCity(country, state, county) {
 export async function POST(req) {
     //const { country, state, county, lattitude, longitude } = await req.json();
     const uscounties = await req.json();
+    
+    try {
+        await prisma.county.createMany({
+            data: uscounties.map((county) => ({
+                country: county.country,
+                state: county.state,
+                county: county.county,
+                lattitude: parseFloat(county.lattitude),
+                longitude: parseFloat(county.longitude),
+              })),
+            skipDuplicates: true, // Skip 
+        })
 
-    /*
-    let arr = [];
-
-    for(let i = 0; i < uscounties.length; i++){
-        let check = await isUniqueCity(uscounties[i].country, uscounties[i].state, uscounties[i].county);
-
-        if(check == true){
-            //console.log("true/かぶってない");
-        
-            arr.push(uscounties[i]);
-            
-        }else {
-            //console.log("false/かぶってる");
-        }
+    } catch (e) {
+        console.log("被りorエラー")
+        console.log(e);
+        //console.log(e);
     }
-    */
-
-    for (let i = 0; i < uscounties.length; i++) {
-
-        try {
-            await prisma.cityName.create({
-                data: {
-                    country: uscounties[i].country,
-                    state: uscounties[i].state,
-                    county: uscounties[i].county,
-                    lattitude: parseFloat(uscounties[i].lattitude),
-                    longitude: parseFloat(uscounties[i].longitude),
-                },
-            })
-        } catch (e) {
-            console.log("被りorエラー")
-        }
-        console.log(`実行中 ${i} / ${uscounties.length - 1}`);
-    }
-
     console.log("完了");
-
-
+    
 
     const cities = await getAllCities();
     return NextResponse.json(cities);

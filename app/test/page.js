@@ -1,7 +1,14 @@
+"use client"
+
+
+import { Notes } from './_components/Notes';
+
+
 export default function Test() {
+
     return (
-      <main>
-        <p>aaa</p>
-      </main>
+        <div>
+            <Notes />
+        </div >
     );
-  }
+}

@@ -7,15 +7,26 @@ import { useState, useEffect, useCallback } from 'react';
 import React from "react";
 import OriginsAdd from "./origins_add";
 import Add from "./add"
+import useSWR from "swr";
 
 
+const fetcher = url => fetch(url).then(res => res.json())
 
-//import returnSelect from "./db";
+function GetOrigins(){
+    const { data, error } = useSWR('/api/origin', fetcher);
+	if (error)return <div>failed to load</div>
+	if (!data)return <div>loading...</div>
+
+	return <div>呼んだ</div>
+}
 
 
 
 
 export default function Map() {
+
+
+
     const [map, setMap] = useState(null)
     const [zoom, setZoom] = useState(6);
     const [center, setCenter] = useState([40.7035, -73.8196]);
@@ -29,7 +40,7 @@ export default function Map() {
 
     //const [position, setPosition] = useState("");
 
-    const [nowPosition, setNowPosition] = useState("");
+    const [nowPosition, setNowPosition] = useState({ lat: 40.7035, lng: -73.8196 });
 
     const [testPopup, setTestPopup] = useState("");
 
@@ -40,13 +51,6 @@ export default function Map() {
         const fetchNotes = async () => {
             const response = await fetch('/api/origin');
             const json = await response.json();
-            /*
-            const p = [];
-            for (let i = 0; i < 1; i++) {
-                p.push({ name: json[i].name, 緯度: 30, 経度: -70 })
-            }
-            setPopups(p);
-            */
             setOrigins(json);
             console.log("origin 読み込んだ")
         };
@@ -55,16 +59,8 @@ export default function Map() {
 
     useEffect(() => {
         const fetchNotes = async () => {
-            const response = await fetch('/api/cityName');
+            const response = await fetch('/api/county');
             const json = await response.json();
-
-            const p = [];
-            /*
-            for (let i = 0; i < 10; i++) {
-                //console.log(json[i])
-                p.push(json[i]);
-            }
-            */
             setCities(json);
             console.log("city 読み込んだ")
         };
@@ -83,113 +79,102 @@ export default function Map() {
         return null;
     }
 
+    function make現在地周辺のcities() {
+        /*
+        {
+            "id": 8,
+            "country": "U.S.",
+            "state": "New York",
+            "county": "Kings",
+            "lattitude": 40.6413,
+            "longitude": -73.9383
+        }
+        */
+
+        let 現在地周辺 = []
+        for (let city in cities) {
+            let latの差 = nowPosition.lat - cities[city].lattitude;
+            let lngの差 = nowPosition.lng - cities[city].longitude;
+            let 最小範囲 = -10;
+            let 最大範囲 = 10;
+            if (最小範囲 < latの差 && latの差 < 最大範囲 && 最小範囲 < lngの差 && lngの差 < 最大範囲) {
+                現在地周辺.push(
+                    cities[city]
+                );
+            }
+        }
+
+        //console.log(現在地周辺);
+        return 現在地周辺;
+    }
+
+    function make表示したいcounty(現在地周辺) {
+        let 表示したいcounty = []
+        for (let city in 現在地周辺) {
+
+            //郡のオブジェクト
+            let county = {
+                county: 現在地周辺[city].county,
+                lattitude: 現在地周辺[city].lattitude,
+                longitude: 現在地周辺[city].longitude,
+                bandsArr: [],
+                bandNames: [],
+            }
+
+            //郡のオブジェクトのリストにその群のバンドを入れる
+            for (let origin in origins) {
+                //console.log(origins[origin]);
+                if (現在地周辺[city].county == origins[origin].county && 現在地周辺[city].state == origins[origin].state) {
+                    county.bandsArr.push(origins[origin]);
+                    county.bandNames.push(origins[origin].name)
+                }
+            }
+
+            //郡にバンドの情報が一つでもあれば表示するリストにその群を入れる。0なら表示リストに入れない。
+            if (county.bandsArr.length != 0) {
+                表示したいcounty.push(county);
+            }
+
+        }
+
+        return 表示したいcounty;
+    }
+
     useEffect(() => {
         //現在地変わったら
 
-        let 現在地周辺 = []
-        let 表示したいバンド = []
+        let 現在地周辺 = make現在地周辺のcities();
+        let 表示したいcounty = make表示したいcounty(現在地周辺)
 
-        if (nowPosition.lat != undefined && nowPosition.lng != undefined) {
-
-            for (let city in cities) {
-                let latの差 = nowPosition.lat - cities[city].lattitude;
-                let lngの差 = nowPosition.lng - cities[city].longitude;
-                let 最小範囲 = -10;
-                let 最大範囲 = 10;
-                if (最小範囲 < latの差 && latの差 < 最大範囲 && 最小範囲 < lngの差 && lngの差 < 最大範囲) {
-                    現在地周辺.push(
-                        cities[city]
-                    );
-                }
-            }
-
-            for (let city in 現在地周辺) {
-
-                let objct = {
-                    county: 現在地周辺[city].county,
-                    lattitude: 現在地周辺[city].lattitude,
-                    longitude: 現在地周辺[city].longitude,
-                    bandsArr: []
-                }
-
-
-                for (let origin in origins) {
-                    //console.log(origins[origin]);
-                    if (現在地周辺[city].county == origins[origin].county && 現在地周辺[city].state == origins[origin].state) {
-
-                        let obj = {
-                            name: origins[origin].name,
-                            country: origins[origin].country,
-                            state: origins[origin].state,
-                            county: origins[origin].county,
-                            formation: origins[origin].formation,
-                            dissolution: origins[origin].dissolution,
-                            //lattitude: 現在地周辺[city].lattitude,
-                            //longitude: 現在地周辺[city].longitude,
-                        }
-                        objct.bandsArr.push(obj);
-                    }
-                }
-
-                if (objct.bandsArr.length != 0) {
-                    //console.log(objct)
-                    表示したいバンド.push(objct);
-                }
-
-                //console.log(objct)
-            }
-
-            //console.log(表示したいバンド);
-
-            let popups = [];
-
-
-            for(let i = 0; i < 表示したいバンド.length; i++){
-                表示したいバンド[i].names = "";
-                for (let j = 0; j < 表示したいバンド[i].bandsArr.length; j++){
-                    表示したいバンド[i].names = 表示したいバンド[i].names + 表示したいバンド[i].bandsArr[j].name + "," + "<br>"
-                }
-
-            }
-
-            //console.log(表示したいバンド);
-
-
-
-            
-            setTestPopup(表示したいバンド.map((item, index) => (
-                
-                <Marker
-                    icon={L.divIcon({
-                        html: `${item.names}`,
-                        className: 'divicon1',
-                        iconSize: [150,10], 
-                        //iconSize: [80, 30],
-                        //iconAnchor: [0, 0],
-                        //popupAnchor: [0, -10]
-                    })}
-                    key={index}
-                    position={[item.lattitude, item.longitude]}
-                >
-
-                </Marker>
-                    
-
-            )))
-            
+        for (let i = 0; i < 表示したいcounty.length; i++) {
+            表示したいcounty[i].names = 表示したいcounty[i].bandNames.join();
         }
 
 
+        setTestPopup(表示したいcounty.map((item, index) => (
 
-
-
-
+            <Marker
+                icon={L.divIcon({
+                    html: `${item.names}`,
+                    className: 'divicon1',
+                    iconSize: [150, 10],
+                    //iconSize: [80, 30],
+                    //iconAnchor: [0, 0],
+                    //popupAnchor: [0, -10]
+                })}
+                key={index}
+                position={[item.lattitude, item.longitude]}
+            >
+            </Marker>
+        )))
     }, [nowPosition]);
 
     //<p>lat: {nowPosition.lat} lng : {nowPosition.lng}</p>
 
     return (
         <div>
+            <Add />
+            <GetOrigins />
             <MapContainer
                 center={center}
                 zoom={zoom}

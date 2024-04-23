@@ -8,6 +8,8 @@ datasource db {
   directUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
+
+
 model notes {
   id        Int      @id @default(autoincrement())
   content   String
@@ -17,20 +19,17 @@ model notes {
 model Origin {
   id          Int      @id @default(autoincrement())
   name        String
-  country     String
-  state       String
-  county      String
-  city        String
+  county_id   Int
   formation   Int
   dissolution Int
   genres      String[]
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
-  @@unique([name, county])
+  @@unique([name])
 }
 
-model CityName {
+model County {
   id        Int    @id @default(autoincrement())
   country   String
   state     String
