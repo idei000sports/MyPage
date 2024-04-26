@@ -1,3 +1,5 @@
+import useSWR from "swr";
+
 export const create = async (content) => {
 
     // APIのURL
@@ -41,6 +43,27 @@ export const read = async () => {
     const response = await fetch(url);
     return await response.json();
 };
+
+export const ReadAll =  () => {
+    const fetcher = url => fetch(url).then(res => res.json())
+    const { data, error, isLoading, mutate } = useSWR('/api/notes', fetcher);
+    return {
+        data,
+        error,
+        isLoading,
+        mutate,
+    }
+}
+
+export const ReadSearch =  (id) => {
+    const fetcher = url => fetch(url).then(res => res.json())
+    const { data, error } = useSWR(`/api/notes/${id}`, fetcher);
+    console.log(data);
+    return {
+        data,
+        error,
+    }
+}
 
 
 

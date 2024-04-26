@@ -1,9 +1,9 @@
+import { Note } from "./Note"
 
-import { useNotes } from "./useNotes";
-import { Note } from "./Note";
-export function Notes() {
-    const { data, error, mutate } = useNotes();
+import { ReadAll } from "./crud";
+export function NoteList() {
 
+    const {data, error} = ReadAll();
     if (error) return <div>failed to load</div>
     if (!data) return <div>loading...</div>
 
@@ -11,9 +11,7 @@ export function Notes() {
         <>
             {
                 data.map((item) => (
-
-                    <Note item={item} key={item.id} />
-
+                    <Note key={item.id} id={item.id} content={item.content} />
                 ))
             }
         </>

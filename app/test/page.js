@@ -1,14 +1,18 @@
 "use client"
 
 
-import { Notes } from './_components/Notes';
+import { NoteList } from './_components/NoteList';
+import { ReadAll } from './_components/crud';
+
 
 
 export default function Test() {
 
-    return (
-        <div>
-            <Notes />
-        </div >
-    );
+
+
+  return (
+    <div>
+      <NoteList />
+    </div >
+  );
 }
