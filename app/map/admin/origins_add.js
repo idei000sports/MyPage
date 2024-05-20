@@ -23,17 +23,15 @@ export default function OriginsAdd() {
 
 
                 for (let i = 0; i < data_string.length; i++) {
-                    
+
                     let s = data_string[i].split(',');
 
                     let obj = {
                         name: s[0],
-                        country: "U.S.",
-                        state: s[2],
-                        county: s[3],
-                        formation: Number(s[4]),
-                        dissolution: Number(s[5]),
-                        genres:[s[6],s[7],s[8]]
+                        county_code: s[1],
+                        formation: Number(s[2]),
+                        dissolution: Number(s[3]),
+                        genres: [s[4], s[5], s[6]]
 
                     }
 
@@ -53,21 +51,23 @@ export default function OriginsAdd() {
         console.log("fetchasyncaddcity")
 
         //for (let i = 0; i < 2/*dataArray.length*/; i++) {
-            // APIのURL
-            const url = "/api/origin";
-            // リクエストパラメータ
-            const params = {
-                method: "POST",
-                // JSON形式のデータのヘッダー
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                // リクエストボディ
-                body: JSON.stringify(dataArray)
-            };
+        // APIのURL
+        const url = "/api/origin";
 
-            // APIへのリクエスト
-            await fetch(url, params);
+        console.log(dataArray);
+        // リクエストパラメータ
+        const params = {
+            method: "POST",
+            // JSON形式のデータのヘッダー
+            headers: {
+                "Content-Type": "application/json",
+            },
+            // リクエストボディ
+            body: JSON.stringify(dataArray)
+        };
+
+        // APIへのリクエスト
+        await fetch(url, params);
         //}
     };
 
@@ -75,7 +75,7 @@ export default function OriginsAdd() {
     return (
         <div>
 
-
+            <button onClick={fetchAsyncAddOrigin}>CSVからOriginsデータ追加</button>
             <h1>add page</h1>
 
 

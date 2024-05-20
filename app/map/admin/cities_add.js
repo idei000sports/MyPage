@@ -27,6 +27,7 @@ export default function Add() {
                     let s = data_string[i].split(',');
 
                     let obj = {
+                        county_code: s[3],
                         country: "U.S.",
                         state: s[5],
                         county: s[1],
@@ -71,7 +72,7 @@ export default function Add() {
 
     return (
         <div>
-            <button onClick={fetchAsyncAddCity}>cityデータ追加</button>
+            <button onClick={fetchAsyncAddCity}>CSVからcityデータ追加</button>
 
             <h1>add page</h1>
 

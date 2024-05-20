@@ -52,6 +52,7 @@ export async function POST(req) {
     try {
         await prisma.county.createMany({
             data: uscounties.map((county) => ({
+                county_code: county.county_code,
                 country: county.country,
                 state: county.state,
                 county: county.county,

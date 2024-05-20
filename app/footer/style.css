@@ -1,0 +1,13 @@
+.footer {
+  padding-top: 4em;
+  background-color: black;
+  min-height: 70vh;
+}
+
+.footer h1, p, a, li {
+  //color: white;
+}
+
+li {
+  list-style: none;
+}

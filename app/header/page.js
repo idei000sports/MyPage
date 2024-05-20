@@ -1,11 +1,30 @@
 "use client"
 
-import Link from "next/link";
-import Script from 'next/script'
 import { useState } from 'react';
-
-
+import "./style.css";
 export default function Header() {
+
+    return (
+        <>
+            <div className="header_main">
+                <div className="header_item">
+                    <h1>LOGO</h1>
+                    <nav>
+                        <ul className="list">
+                            <li><a href="/">HOME</a></li>
+                            <li><a href="/dajare">ダジャレ</a></li>
+                            <li><a href="/map">マップ</a></li>
+                            <li className="contact">お問い合わせ</li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </>
+    );
+}
+
+
+/*
 
     const [isClose, setIsClose] = useState(true);
 
@@ -13,9 +32,12 @@ export default function Header() {
         setIsClose(!isClose);
     };
 
+    console.log("test");
+
 
     return (
         <>
+        
             <div className={`container-fluid d-flex fixed-top mynav ${isClose ? "d-none" : ""}`}>
                 <div className="row align-items-center rowkun text-white">
                     <div className="col"></div>
@@ -56,4 +78,4 @@ export default function Header() {
 
         </>
     );
-}
+*/

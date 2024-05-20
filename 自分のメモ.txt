@@ -1,2 +1,69 @@
 クラスコンポーネントは使わなくてOK
 
+function Hoge(props) {
+  return (
+
+  )
+}
+
+// vs
+
+const Hoge = (props) => {
+  return (
+
+  )
+}
+
+
+
+・コンポーネントは大文字で始める
+
+・import の｛｝は一個のファイルに複数ある場合は{}を使う
+・つけとったほうが丸い
+
+・(props)の部分
+({id, text})とかでもいい
+
+/*
+
+上下中央揃え
+              <div className={styles.top}>
+                <div className={styles.top_ko}>
+                <h1>タイトル</h1>
+                <p>サブタイトルとか</p>
+                </div>
+              </div>
+
+.top{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    background: yellow;
+
+}
+
+.top_ko {
+    background: #99f;
+    height: 100px;
+}
+
+*/
+
+
+
+# Prisma Studioの起動
+$ prisma studio
+
+# データベースをリセットしDBへ反映(本番では使用しない)
+$ prisma migrate reset
+
+# マイグレーションのステータスチェック
+$ prisma migrate status
+
+# マイグレーションの実行・DBへ反映
+$ prisma migrate deploy
+
+# 型情報の生成
+$ prisma generate

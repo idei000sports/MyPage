@@ -5,8 +5,7 @@ import "./css.css"
 import { MapContainer, TileLayer, useMap, Marker, Popup, Tooltip, useMapEvents } from 'react-leaflet'
 import { useState, useEffect, useCallback } from 'react';
 import React from "react";
-import OriginsAdd from "./origins_add";
-import Add from "./add"
+
 import useSWR from "swr";
 
 
@@ -17,7 +16,7 @@ function GetOrigins(){
 	if (error)return <div>failed to load</div>
 	if (!data)return <div>loading...</div>
 
-	return <div>呼んだ</div>
+	return <div><p>呼んだ</p></div>
 }
 
 
@@ -80,16 +79,6 @@ export default function Map() {
     }
 
     function make現在地周辺のcities() {
-        /*
-        {
-            "id": 8,
-            "country": "U.S.",
-            "state": "New York",
-            "county": "Kings",
-            "lattitude": 40.6413,
-            "longitude": -73.9383
-        }
-        */
 
         let 現在地周辺 = []
         for (let city in cities) {
@@ -123,11 +112,14 @@ export default function Map() {
 
             //郡のオブジェクトのリストにその群のバンドを入れる
             for (let origin in origins) {
-                //console.log(origins[origin]);
-                if (現在地周辺[city].county == origins[origin].county && 現在地周辺[city].state == origins[origin].state) {
+
+                //console.log(現在地周辺[city].id);
+                if (現在地周辺[city].county_code == origins[origin].county_code) {
                     county.bandsArr.push(origins[origin]);
                     county.bandNames.push(origins[origin].name)
                 }
+                
+
             }
 
             //郡にバンドの情報が一つでもあれば表示するリストにその群を入れる。0なら表示リストに入れない。
@@ -173,7 +165,7 @@ export default function Map() {
 
     return (
         <div>
-            <Add />
+
             <GetOrigins />
             <MapContainer
                 center={center}
@@ -184,7 +176,7 @@ export default function Map() {
             >
                 <TileLayer
                     attribution='Map tiles by Carto, under CC BY 3.0. Data by OpenStreetMap, under ODbL.'
-                    url="	https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png"
+                    url="	https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png"
                 />
 
                 {testPopup}

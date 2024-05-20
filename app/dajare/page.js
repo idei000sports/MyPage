@@ -1,9 +1,10 @@
 
 "use client"
 import { useState, useEffect } from 'react'
-import { Suspense } from 'react';
-import Word from "./Word"
 import transformTextToBoin from "./transformTextToBoin"
+import { Header } from './header';
+import { List } from './list';
+import { zengo } from './zengo';
 
 
 export default function Home() {
@@ -12,12 +13,12 @@ export default function Home() {
     const [boin, setBoin] = useState("");
     const [words, setWords] = useState([]);
     const [ichibuMode, setIchibuMode] = useState(false);
-    const [nowMode, setNowMode] = useState("単語モード");
+
     const [ichibuText, setIchibuText] = useState([]);
 
-    const [loadChu, setLoadChu] = useState("");
 
-    const [formText, setFormText] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
+
 
 
     const onClickIchibu = () => {
@@ -30,8 +31,7 @@ export default function Home() {
 
 
     useEffect(() => {
-        setNowMode(ichibuMode ? "一部モード" : "単語モード");
-        setFormText(ichibuMode ? "犬も歩けば「ぼう」に当たる" : "ひらがな/カタカナで入力してください");
+
 
         if (ichibuMode == true) {
             //一部モードなので受け取ったテキストの「」内を取得
@@ -39,25 +39,9 @@ export default function Home() {
             let seiki = new RegExp(/「.+?」/);
             let s = "";
             if (seiki.exec(word) != null) {
-                let obj = {
-                    mae: "",
-                    ato: "",
-                }
-                //正規表現で周りを削除
-                s = seiki.exec(word)[0]
-                //[]を外す
-                s = s.slice(1);
-                s = s.slice(0, -1);
-                setBoin(transformTextToBoin(s));
-                console.log("[]の中" + s);
-
-                seiki = new RegExp(/(.*)(?=「)/);
-                obj.mae = seiki.exec(word)[0];
-                seiki = new RegExp(/(?<=」)(.*)/);
-                obj.ato = seiki.exec(word)[0];
-
-
-                setIchibuText(obj);
+                const 一文 = zengo(word)
+                setBoin(transformTextToBoin(一文.mannaka));
+                setIchibuText(一文);
             }
             //setWord(s);
         } else {
@@ -70,31 +54,23 @@ export default function Home() {
 
 
 
-    async function searchFromAPI(){
-        const response = await fetch('/api/words', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ boin: boin }),
-        });
+    async function searchFromAPI() {
+        const response = await fetch(`/api/words/search/${boin}`);
 
         return await response.json();
     }
 
     const search = async () => {
-        setLoadChu("ロード中");
+        setIsLoading(true);
         setWords([]);
 
         const getted = await searchFromAPI();
-        setWords(getted.length != 0 ? getted : [{id: 0, word: "結果なし"}]);
+        //const getted = ReadSearch(boin);
+        setWords(getted.length != 0 ? getted : [{ id: 0, word: "結果なし" }]);
 
-        setLoadChu("");
+        setIsLoading(false);
 
     }
-
-
-
 
 
 
@@ -103,18 +79,10 @@ export default function Home() {
 
             <div className="container mt-4 mb-4">
                 <div className="row">
-                    <div className="col text-center">
-                        <p className="h1">ダジャレ替え歌作成機</p>
-
-                    </div>
-                </div>
-            </div>
-            <div className="container mt-4 mb-4">
-                <div className="row">
                     <div className="col">
                         <div className="form-check form-switch">
                             <input className="form-check-input" type="checkbox" role="switch" onChange={onClickIchibu}></input>
-                            <label className="form-check-label">{nowMode}</label>
+                            <label className="form-check-label">{ichibuMode ? "一部モード" : "単語モード"}</label>
                         </div>
                     </div>
                 </div>
@@ -122,7 +90,7 @@ export default function Home() {
                     <div className="col-8">
                         <div className="form-floating mb-3">
                             <input type="text" className="form-control" id="floatingInput" placeholder="" onChange={onChangeText}></input>
-                            <label htmlFor="floatingInput">{formText}</label>
+                            <label htmlFor="floatingInput">{ichibuMode ? "犬も歩けば「ぼう」に当たる" : "ひらがな/カタカナで入力してください"}</label>
                         </div>
                     </div>
                     <div className="col-4">
@@ -132,25 +100,10 @@ export default function Home() {
 
             </div>
 
-            <p>{loadChu}</p>
+            <p>{isLoading ? "ロード中" : ""}</p>
 
 
-            <div className="container">
-                <div className="row">
-                    <div className="col">
-
-                        {words.map((word) => (
-                            <div key={word.id}>
-                                <ul className="list-group list-group-flush">
-                                    <Word word={word} ichibuText={ichibuText} />
-                                </ul>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </div>
-
-
+            <List words={words} ichibuText={ichibuText} />
 
 
         </>

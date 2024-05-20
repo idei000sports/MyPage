@@ -19,7 +19,7 @@ model notes {
 model Origin {
   id          Int      @id @default(autoincrement())
   name        String
-  county_id   Int
+  county_code   String
   formation   Int
   dissolution Int
   genres      String[]
@@ -31,13 +31,14 @@ model Origin {
 
 model County {
   id        Int    @id @default(autoincrement())
+  county_code String
   country   String
   state     String
   county    String
   lattitude Float
   longitude Float
 
-  @@unique([country, state, county])
+  @@unique([county_code, country, state, county])
 }
 
 

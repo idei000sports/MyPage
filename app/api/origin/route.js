@@ -31,25 +31,27 @@ async function getAllOrigins() {
 
 
 export async function POST(req){
-    const origin = await req.json();
+    const origins = await req.json();
     try {
-        await prisma.origin.create({
-            data: {
+        await prisma.origin.createMany({
+            data: origins.map((origin) => ({
                 name: origin.name,
-                country: origin.country,
-                state: origin.state,
-                county: origin.county,
-                city: origin.city,
+                county_code: origin.county_code,
                 formation: Number(origin.formation),
                 dissolution: Number(origin.dissolution),
-                genres: origin.genres
-            },
+                genres: origin.genres,
+
+              })),
+            skipDuplicates: true, // Skip 
         })
     } catch (e) {
         console.log("被りorエラー")
+        console.log(e)
     }
+    
     console.log("完了");
     const edited_origins = await getAllOrigins();
+    console.log(edited_origins)
     return NextResponse.json(edited_origins);
 }
 

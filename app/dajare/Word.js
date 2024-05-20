@@ -1,27 +1,19 @@
-'use client'
-import React from 'react'
-import Link from 'next/link'
 
-const Word = ({ word, ichibuText }) => {
+export const Word = ({ word, kana, ichibuText}) => {
+
+    const mae = ichibuText.mae;
+    const ato = ichibuText.ato;
+
     return (
-
-
-
         <li className="list-group-item list-group-item-action fs-4">
-            ・
-            {ichibuText.mae}
+            {mae}
             <ruby>
-                <b>{word.word}</b>
+                <b>{word}</b>
                 <rt>
-                    {word.kana}
+                    {kana}
                 </rt>
             </ruby>
-            {ichibuText.ato}
+            {ato}
         </li>
-
-
-
     )
 }
-
-export default Word

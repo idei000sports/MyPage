@@ -1,7 +1,4 @@
-name,country,state,county,formation,dissolution,genre1,genre2,gnre3
-The Crickets,U.S.,Texas,Lubbock,1957,2016,Rock and roll,rockabilly,,
-Chuck Berry,U.S.,Missouri,St. Louis,1953,2017,Rock and roll,rhythm and blues,,
-Blind Lemon Jefferson,U.S.,Illinois,Cook,1912,1929,Blues,,,
-Iron Butterfly,U.S.,California,San Diego,1966,1971,Acid Rock,hard rock,psychedelic rock,
-Eagles,U.S.,California,Los Angeles,1971,1980,rock,country rock,,
-Vampire Weekend,U.S.,New York,New York,2006,0,rock,Indie rock,Indie Pop,
+name,county_code,formation,dissolution,genre1,genre2,gnre3
+The Crickets,48303,1957,2016,Rock and roll,rockabilly,,
+Chuck Berry,29510,1953,2017,Rock and roll,rhythm and blues,,
+Vampire Weekend,36061,2006,0,rock,Indie rock,Indie Pop,

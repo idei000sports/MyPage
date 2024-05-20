@@ -1,0 +1,66 @@
+
+
+.main{
+    padding-top: 8em;
+}
+
+.top_background{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 100vh;
+}
+
+
+.top{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+
+}
+.top_title{
+
+    text-align: center;
+}
+
+.top_title h1 {
+    color: black;
+    font-size: 128px;
+}
+
+.top_text{
+    color: white;
+    text-align: center;
+}
+.top_image{
+    text-align: center;
+}
+.top_image img{
+    height: 70vh;
+}
+
+.background_image{
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 50vh;
+}
+
+.content_row{
+    padding: 4em;
+}
+
+.card {
+    padding: 1em;
+    background-color: white;
+    min-height: 30vh;
+    border-radius: 40px;
+    text-align: center;
+}
+
+.card i{
+    font-size: 100px;
+    color: #1f7da1;
+}
