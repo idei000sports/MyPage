@@ -52,7 +52,7 @@ export default function OriginsAdd() {
 
         //for (let i = 0; i < 2/*dataArray.length*/; i++) {
         // APIのURL
-        const url = "/api/origin";
+        const url = "/api/origin/import";
 
         console.log(dataArray);
         // リクエストパラメータ

@@ -25,7 +25,9 @@ export default function RootLayout({ children }) {
     <html lang="ja">
       <body className={notojp.className}>
         <Header />
+        <div style={{paddingTop: "4em"}}>
         {children}
+        </div>
         <Footer />
         <ScrollTop />
         <Script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></Script>
