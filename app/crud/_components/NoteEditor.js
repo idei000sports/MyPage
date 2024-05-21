@@ -1,6 +1,6 @@
 
 import { useState, useEffect, useCallback } from 'react';
-import { useRouter } from 'next/navigation';
+//import { useRouter } from 'next/navigation';
 
 import { update, del } from '../_components/crud';
 
@@ -21,13 +21,13 @@ export function NoteEditor(props) {
 
     const onClickUpdate = async () => {
         update(props.data.id, text);
-        router.push('/crud');
+        //router.push('/crud');
 
     }
 
     const onClickDelete = async () => {
         del(props.data.id);
-        router.push('/crud');
+        //router.push('/crud');
     }
 
 
