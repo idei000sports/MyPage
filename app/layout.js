@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
     <html lang="ja">
       <body className={notojp.className}>
         <Header />
-        <div style={{paddingTop: "4em"}}>
+        <div>
         {children}
         </div>
         <Footer />

@@ -9,7 +9,7 @@ export default function Header() {
                 <div className="container-fluid">
                     <div className="row justify-content-center">
                         <div className="col-lg-4">
-                            <h1>ロゴ</h1>
+                            <img src="/illust/logo2.png"></img>
                         </div>
                         <div className="col-lg-2">
                             <nav>
