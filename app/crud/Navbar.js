@@ -5,8 +5,8 @@ export default function Navbar() {
             <div className="row">
                 <div className="col">
                     <ul>
-                        <li><a href="/test/create">create</a></li>
-                        <li><a href="/test">read</a></li>
+                        <li><a href="/crud/create">create</a></li>
+                        <li><a href="/crud">read</a></li>
                     </ul>
                 </div>
             </div>

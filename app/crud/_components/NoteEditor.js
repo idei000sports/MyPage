@@ -9,9 +9,9 @@ export function NoteEditor(props) {
     const [text, setText] = useState("");
 
     if (props.error) return <div>failed to load</div>
-    if (!props.data) return <div>loading...</div>
+    if (!props.data) return <div>loading..edditor.</div>
 
-    //const router = useRouter();
+    const router = useRouter();
 
 
     const onChangeText = (e) => {
@@ -21,13 +21,13 @@ export function NoteEditor(props) {
 
     const onClickUpdate = async () => {
         update(props.data.id, text);
-        //router.push('/test');
+        router.push('/crud');
 
     }
 
     const onClickDelete = async () => {
         del(props.data.id);
-        //router.push('/test');
+        router.push('/crud');
     }
 
 

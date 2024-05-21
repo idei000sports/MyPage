@@ -14,11 +14,9 @@ export default function id({ params }) {
     const {data, error} = ReadSearch(params.id);
     if (error) return <div>failed to load</div>
     if (!data) return <div>loading...</div>
-
-
     return (
         <>
-            <Note id={data.id}  content={data.content}/>
+            <NoteEditor data={data}></NoteEditor>
         </>
 
     );

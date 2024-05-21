@@ -17,7 +17,7 @@ export default function Create() {
 
     const onClickCreate = async () => {
         create(content);
-        router.push('/test');
+        router.push('/crud');
     }
 
     return (

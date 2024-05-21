@@ -6,66 +6,15 @@ import { MapContainer, TileLayer, useMap, Marker, Popup, Tooltip, useMapEvents }
 import { useState, useEffect, useCallback } from 'react';
 import React from "react";
 
-import useSWR from "swr";
 
+export default function Map(props) {
 
-const fetcher = url => fetch(url).then(res => res.json())
+    const origins = props.origins;
+    const cities = props.cities;
 
-function GetOrigins(){
-    const { data, error } = useSWR('/api/origin', fetcher);
-	if (error)return <div>failed to load</div>
-	if (!data)return <div>loading...</div>
-
-	return <div><p>呼んだ</p></div>
-}
-
-
-
-
-export default function Map() {
-
-
-
-    const [map, setMap] = useState(null)
-    const [zoom, setZoom] = useState(6);
-    const [center, setCenter] = useState([40.7035, -73.8196]);
-
-    const [popups, setPopups] = useState([]);
-    const [cityPopups, setCityPopups] = useState([]);
-
-    const [origins, setOrigins] = useState([]);
-
-    const [cities, setCities] = useState([{ county: "dummy", lattitude: 0, longitude: 0 }]);
-
-    //const [position, setPosition] = useState("");
 
     const [nowPosition, setNowPosition] = useState({ lat: 40.7035, lng: -73.8196 });
-
     const [testPopup, setTestPopup] = useState("");
-
-
-
-
-    useEffect(() => {
-        const fetchNotes = async () => {
-            const response = await fetch('/api/origin');
-            const json = await response.json();
-            setOrigins(json);
-            console.log("origin 読み込んだ")
-        };
-        fetchNotes();
-    }, []);
-
-    useEffect(() => {
-        const fetchNotes = async () => {
-            const response = await fetch('/api/county');
-            const json = await response.json();
-            setCities(json);
-            console.log("city 読み込んだ")
-        };
-        fetchNotes();
-    }, []);
-
 
 
     function NowCoodinates() {
@@ -73,8 +22,10 @@ export default function Map() {
         const map = useMapEvents({
             dragend: (e) => {
                 setNowPosition({ lat: e.target.getCenter().lat, lng: e.target.getCenter().lng });
+                表示();
             }
         });
+
         return null;
     }
 
@@ -118,7 +69,7 @@ export default function Map() {
                     county.bandsArr.push(origins[origin]);
                     county.bandNames.push(origins[origin].name)
                 }
-                
+
 
             }
 
@@ -132,7 +83,7 @@ export default function Map() {
         return 表示したいcounty;
     }
 
-    useEffect(() => {
+    function 表示() {
         //現在地変わったら
 
         let 現在地周辺 = make現在地周辺のcities();
@@ -150,28 +101,23 @@ export default function Map() {
                     html: `${item.names}`,
                     className: 'divicon1',
                     iconSize: [150, 10],
-                    //iconSize: [80, 30],
-                    //iconAnchor: [0, 0],
-                    //popupAnchor: [0, -10]
                 })}
                 key={index}
                 position={[item.lattitude, item.longitude]}
             >
             </Marker>
         )))
-    }, [nowPosition]);
+    }
 
-    //<p>lat: {nowPosition.lat} lng : {nowPosition.lng}</p>
 
     return (
         <div>
 
-            <GetOrigins />
+
             <MapContainer
-                center={center}
-                zoom={zoom}
+                center={[40.7035, -73.8196]}
+                zoom={6}
                 scrollWheelZoom={true}
-                ref={setMap}
                 style={{ height: '98vh' }}
             >
                 <TileLayer
@@ -187,63 +133,3 @@ export default function Map() {
         </div>
     )
 }
-
-/*
-
-
-            <MapContainer center={center} zoom={4} scrollWheelZoom={true} style={{ height: '100vh' }}>
-                <TileLayer
-                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                />
-
-                {popups.map((item, index) => (
-                    <Popup
-                        key={index}
-                        position={[parseFloat(item.緯度), parseFloat(item.経度)]}
-                        autoClose={false}
-                        closeOnClick={false}
-                        closeButton={false}
-                        closeOnEscapeKey={false}
-                    >{item.name}</Popup>
-                ))}
-
-                {cityPopups.map((item, index) => (
-                    <Popup
-                        key={index}
-                        position={[parseFloat(item.lattitude), parseFloat(item.longitude)]}
-                        autoClose={false}
-                        closeOnClick={false}
-                        closeButton={false}
-                        closeOnEscapeKey={false}
-                    >{item.county}</Popup>
-                ))}
-
-
-            </MapContainer>
-
-
-
-                {cityPopups.map((item, index) => (
-                    <Popup
-                        key={index}
-                        position={[item.lattitude, item.longitude]}
-                        autoClose={false}
-                        closeOnClick={false}
-                        closeButton={false}
-                        closeOnEscapeKey={false}
-                    >{item.county}</Popup>
-                ))}
-
-
-{cityPopups.map((item, index) => (
-    <Popup
-        key={index}
-        position={[parseFloat(item.緯度), parseFloat(item.経度)]}
-        autoClose={false}
-        closeOnClick={false}
-        closeButton={false}
-        closeOnEscapeKey={false}
-    >{item.county}</Popup>
-))}
-*/

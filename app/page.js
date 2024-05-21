@@ -78,7 +78,7 @@ export default function Home() {
 
 
 
-        <div className="container-fluid" style={{ backgroundColor: "#1f7da1" }}>
+        <div className="container-fluid" style={{ backgroundColor: "#333" }}>
           <div className={`row ${styles.content_row}`}>
             <div className="col">
               <div className="col">
@@ -143,65 +143,7 @@ export default function Home() {
 
 
 
-        <div className={`row ${styles.content_row}`}>
-          <div className="col">
-            <div className={styles.background_image} style={{ backgroundImage: 'url(/top/me.jpg)' }}>
-            </div>
-          </div>
 
-
-          <div className="col">
-            <div className={styles.background_image} style={{ backgroundImage: 'url(/top/me.jpg)' }}>
-            </div>
-          </div>
-        </div>
-
-
-
-        <div className={styles.background_image} style={{ backgroundImage: 'url(/top/me.jpg)' }}>
-          <div className={`row ${styles.content_row}`}>
-          </div>
-        </div>
-
-
-
-
-
-
-
-        <div className="row">
-          <div className="col">
-            <h1>image</h1>
-          </div>
-        </div>
-
-        <div className="row">
-          <div className="col">
-            <h1>モロモロ</h1>
-          </div>
-          <div className="col">
-            <h1>画像</h1>
-          </div>
-        </div>
-
-        <div className="row">
-          <div className="col">
-            <h1>画像4枚</h1>
-          </div>
-        </div>
-      </div>
-
-
-      <div className="cointainer-fluid ">
-
-        <div className="row">
-          <div className="col">
-            <h1>モロモロ</h1>
-          </div>
-          <div className="col">
-            <h1>画像</h1>
-          </div>
-        </div>
       </div>
 
 

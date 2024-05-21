@@ -13,7 +13,7 @@ function GetOrigins(content) {
     return (
         data.map((d) => (
           <div key={d.id}>
-            <p>{d.id}<a href={"/test/" + d.id}>{d.content}</a></p>
+            <p>{d.id}<a href={"/crud/" + d.id}>{d.content}</a></p>
           </div>
         ))
       )
