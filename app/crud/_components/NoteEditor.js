@@ -1,3 +1,5 @@
+//useRouterの使い方で怒られるので今後修正する
+//2024/05/21
 
 import { useState, useEffect, useCallback } from 'react';
 //import { useRouter } from 'next/navigation';
@@ -11,7 +13,7 @@ export function NoteEditor(props) {
     if (props.error) return <div>failed to load</div>
     if (!props.data) return <div>loading..edditor.</div>
 
-    const router = useRouter();
+    //const router = useRouter();
 
 
     const onChangeText = (e) => {
