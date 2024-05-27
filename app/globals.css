@@ -1,6 +1,9 @@
 
 
 
+a,a:hover,a:visited{
+  color: inherit;
+}
 
 .scroll-top {
     position: fixed;
