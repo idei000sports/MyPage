@@ -4,8 +4,11 @@ export default function Layout({ children }) {
     return (
         <>
 
+            <main>
             <Header title={"ダジャレ替え歌作成機"} />
-            <main>{children}</main>
+                {children}
+                
+            </main>
 
 
 

@@ -44,12 +44,13 @@ export default function Home() {
 
 
     return (
-        <div>
+        <main>
+            <div classname="container" style={{paddingTop: "2em"}}>
+                <Map origins={origins} cities={cities} />
+            </div>
 
-            <Map origins={origins} cities={cities} />
 
-
-        </div>
+        </main>
     )
 }
 /*

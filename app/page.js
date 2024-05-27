@@ -8,7 +8,7 @@ export default function Home() {
         <main>
             <div className="container-fluid">
                 <div className="row">
-                    <div className="col" style={{height: "200vh"}}>
+                    <div className="col" style={{height: "100vh"}}>
                         <p>ああああ</p>
                     </div>
                 </div>

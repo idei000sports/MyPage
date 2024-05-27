@@ -1,19 +1,39 @@
-.list-inline-item a{
-  font-size: 14px;
+
+li {
+  list-style: none;
+}
+
+
+
+.bi-list {
+  color: #F2163E;
+}
+.bi-x-circle {
+  color: #F2F2F2;
+}
+li a{
+  font-size: 18px;
   font-weight: 600;
-  padding-left: 1em;
-  padding-right: 1em;
   text-decoration: none;
+  color: #F2F2F2;
   
 }
 
+li h1 {
+  color: #F2F2F2;
+  font-size: 24px;
+  font-weight: 600;
+
+}
+
 .menu {
-  background-color: red;
-  height: 100vh;
+  background-color: #F2163E;
+  height: 100%;
   width: 100%;
 
 }
 
 .header {
+  position: sticky;
   width: 100%;
 }

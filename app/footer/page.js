@@ -8,7 +8,7 @@ export default function Footer() {
     return (
         <>
             <footer className="footer">
-                <div className="container-fluid">
+                <div className="container">
                     <div className="row justify-content-center">
                         <div className="col-lg-4">
                             <h1>出射ホームページ</h1>

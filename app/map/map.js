@@ -111,25 +111,21 @@ export default function Map(props) {
 
 
     return (
-        <div>
+        <div style={{height: "100vh", width: "100vh"}}>
+        <MapContainer
+            center={[40.7035, -73.8196]}
+            zoom={6}
+            scrollWheelZoom={true}
+            style={{ height: '100vh' }}
+        >
+            <TileLayer
+                attribution='Map tiles by Carto, under CC BY 3.0. Data by OpenStreetMap, under ODbL.'
+                url="	https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png"
+            />
 
-
-            <MapContainer
-                center={[40.7035, -73.8196]}
-                zoom={6}
-                scrollWheelZoom={true}
-                style={{ height: '98vh' }}
-            >
-                <TileLayer
-                    attribution='Map tiles by Carto, under CC BY 3.0. Data by OpenStreetMap, under ODbL.'
-                    url="	https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png"
-                />
-
-                {testPopup}
-                <NowCoodinates />
-            </MapContainer>
-
-
+            {testPopup}
+            <NowCoodinates />
+        </MapContainer>
         </div>
     )
 }

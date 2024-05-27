@@ -75,9 +75,9 @@ export default function Home() {
 
 
     return (
-        <>
+        <main>
 
-            <div className="container mt-4 mb-4">
+            <div className="container">
                 <div className="row">
                     <div className="col">
                         <div className="form-check form-switch">
@@ -106,7 +106,7 @@ export default function Home() {
             <List words={words} ichibuText={ichibuText} />
 
 
-        </>
+        </main>
     )
 
 }

@@ -1,10 +1,13 @@
 .footer {
-  padding-top: 4em;
-  background-color: #4b5564;
+  padding-top: 2em;
+  background-color: #F2163E;
   min-height: 30vh;
-  color: white;
+  color: #F2F2F2;
+  font-weight: 600;
 }
 
 .footer a { 
-  color: white;
+  font-weight: 600;
+  color: #F2F2F2;
+  text-decoration: none;
 }
