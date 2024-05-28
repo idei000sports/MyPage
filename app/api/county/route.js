@@ -24,7 +24,11 @@ export const GET = async (req) => {
 }
 
 async function getAllCities() {
-    const cities = await prisma.county.findMany();
+    const cities = await prisma.county.findMany({
+        orderBy: {
+          county: 'asc'
+        },
+      });
     return cities;
 }
 
