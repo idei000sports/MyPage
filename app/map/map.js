@@ -7,10 +7,17 @@ import { useState, useEffect, useCallback } from 'react';
 import React from "react";
 
 
+
 export default function Map(props) {
 
     const origins = props.origins;
     const cities = props.cities;
+  
+
+    useEffect(() => {
+        表示();
+    }, []);
+
 
 
     const [nowPosition, setNowPosition] = useState({ lat: 40.7035, lng: -73.8196 });

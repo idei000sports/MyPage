@@ -38,8 +38,8 @@ export default function Header() {
                 </>
             ) : null}
 
-            <nav class="navbar navbar-expand-lg fixed-top">
-                <div class="container">
+            <nav className="navbar navbar-expand-lg fixed-top">
+                <div className="container">
                     <h1 className="navbar-brand" style={{ color: logoColor, fontSize: "36px" }} href="#">出射</h1>
                     <div className="me-auto"></div>
                     <i className={icon} style={{ fontSize: "36px" }}  onClick={onClickOpen} ></i>
