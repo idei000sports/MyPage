@@ -72,7 +72,7 @@ export default function Home() {
                             <label>county_code</label>
                             <select class="form-select" onChange={(e) => setCountyCode(e.target.value)}>
                                 {data.map((item) => (
-                                    <option value={item.county_code}>
+                                    <option value={item.county_code} key={item.id}>
                                         {`${item.county}(${item.state}州)`}
                                     </option>
                                 ))}
