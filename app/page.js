@@ -9,7 +9,7 @@ export default function Home() {
             <div className="container-fluid">
                 <div className="row">
                     <div className="col" style={{height: "100vh"}}>
-                        <p>ああああ</p>
+                        <p>ああああささあ</p>
                     </div>
                 </div>
             </div>
