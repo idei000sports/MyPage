@@ -6,3 +6,6 @@
     background:none;  text-align: left; font-size: 16px;
 }
 
+.leaflet-control { z-index: 0 !important}
+.leaflet-pane { z-index: 0 !important}
+.leaflet-top, .leaflet-bottom {z-index: 0 !important}

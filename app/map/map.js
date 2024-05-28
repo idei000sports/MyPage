@@ -118,7 +118,6 @@ export default function Map(props) {
 
 
     return (
-        <div style={{height: "100vh", width: "100vh"}}>
         <MapContainer
             center={[40.7035, -73.8196]}
             zoom={6}
@@ -133,6 +132,5 @@ export default function Map(props) {
             {testPopup}
             <NowCoodinates />
         </MapContainer>
-        </div>
     )
 }
