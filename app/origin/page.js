@@ -56,7 +56,7 @@ export default function Home() {
     return (
         <main>
             <div className="container pb-4">
-                <h1>追加</h1>
+                <h1>追加画面あああ</h1>
             </div>
             <form>
                 <div className="container pt-4">
