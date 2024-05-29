@@ -1,10 +1,14 @@
 
 "use client"
+
+
+
 import { useState, useEffect } from 'react'
 import transformTextToBoin from "./transformTextToBoin"
-import { Header } from './header';
 import { List } from './list';
 import { zengo } from './zengo';
+
+import  CommonHeader  from '../common/header'
 
 
 export default function Home() {
@@ -13,10 +17,7 @@ export default function Home() {
     const [boin, setBoin] = useState("");
     const [words, setWords] = useState([]);
     const [ichibuMode, setIchibuMode] = useState(false);
-
     const [ichibuText, setIchibuText] = useState([]);
-
-
     const [isLoading, setIsLoading] = useState(false);
 
 
@@ -75,9 +76,15 @@ export default function Home() {
 
 
     return (
-        <main>
+        <>
+            <CommonHeader/>
+            <div className="container" style={{ minHeight: "100vh" }}>
+                <div className="row">
+                    <div className="col text-center">
+                        <h2>ダジャレ作成機</h2>
+                    </div>
+                </div>
 
-            <div className="container">
                 <div className="row">
                     <div className="col">
                         <div className="form-check form-switch">
@@ -98,15 +105,15 @@ export default function Home() {
                     </div>
                 </div>
 
+                <div className="row">
+                    <div className="col">
+                        <p>{isLoading ? "ロード中" : ""}</p>
+                        <List words={words} ichibuText={ichibuText} />
+                    </div>
+
+                </div>
             </div>
-
-            <p>{isLoading ? "ロード中" : ""}</p>
-
-
-            <List words={words} ichibuText={ichibuText} />
-
-
-        </main>
+        </>
     )
 
 }

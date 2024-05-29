@@ -1,11 +1,14 @@
-export const Header = ({title}) => {
+
+export default function CommonHeader() {
+
     return (
         <div className="container">
             <div className="row">
                 <div className="col text-center">
-                    <p className="h1">{title}</p>
+                    <a href="/home">ホームへ</a>
+                    <h1>common</h1>
                 </div>
             </div>
         </div>
-    )
+    );
 }

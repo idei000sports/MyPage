@@ -1,3 +1,43 @@
+:root {
+  --main-color: #F2163E;
+  --margin: margin;
+}
+
+html {
+  font-size: 20px;
+}
+
+p{
+  font-weight: 600;
+}
+
+
+
+.logo {
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.logo:hover {
+  animation-duration: 0.5s;
+  animation-name: slidein;
+  animation-fill-mode: forwards;
+}
+
+.sub_logo {
+  //color: var(--main-color);
+  font-weight: 600;
+}
+
+@keyframes slidein {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  100% {
+    transform: translate(1px, 1px);
+  }
+}
 
 
 .scroll-top {
@@ -23,6 +63,13 @@
 
 
   main {
-    background-color: #F2F2F2;
     padding-top: 8em;
+  }
+
+  body {
+    /*なんか効かない
+    background-color: #F2F2F2;
+    */
+
+    
   }

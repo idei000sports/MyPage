@@ -3,7 +3,8 @@
 }
 
 .divicon1{
-    background:none;  text-align: left; font-size: 16px;
+    background:none;  text-align: left; 
+    font-weight:600;
 }
 
 .leaflet-control { z-index: 0 !important}

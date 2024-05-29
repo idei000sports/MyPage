@@ -28,13 +28,11 @@ export default function Home() {
 
 
     return (
-        <main>
+        <>
             <div className="container" style={{paddingTop: "2em"}}>
                 <Map origins={origins} cities={cities}/>
             </div>
-
-
-        </main>
+        </>
     )
 }
 /*
