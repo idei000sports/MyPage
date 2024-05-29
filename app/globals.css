@@ -5,6 +5,7 @@
 
 html {
   font-size: 20px;
+
 }
 
 p{
@@ -61,10 +62,6 @@ p{
     
   }
 
-
-  main {
-    padding-top: 8em;
-  }
 
   body {
     /*なんか効かない

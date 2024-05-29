@@ -20,7 +20,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="ja">
-      <body className={notojp.className} style={{ backgroundColor: "#F2F2F2" }}>
+      <body className={notojp.className} style={{  backgroundColor: "#F8F8F8"}}>
           {children}
 
       </body>
