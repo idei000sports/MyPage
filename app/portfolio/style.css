@@ -1,54 +1,168 @@
-
-
 ul {
     padding-left: 0;
 }
+
 li {
     list-style: none;
+    font-weight: 600;
 }
 
 header {
     padding-left: 20%;
     padding-right: 20%;
     min-height: 200px;
+
+    /* 上下中央揃え */
     display: flex;
     align-items: center;
 }
 
-header ul {
+
+
+
+/*for SP*/
+@media screen and (max-width:768px) {
+
+    .pc_nav {
+        display: none;
+    }
+
+    .sp_nav {
+        /*https://rico-notes.com/programming/html/header-responsive/*/
+        /* スマホ用メニュー */
+        /*　前面に表示 */
+        z-index: 1;
+        /* 固定位置 */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+
+        background: rgba(0, 0, 0, .1);
+        transition: all .2s ease-in-out;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+    }
+
+    .sp_nav li {
+        color: #F2778D;
+    }
+
+    .hide {
+
+        display: none;
+    }
+
+
+    #humburger {
+        /* relative == 相対的な位置取りをする */
+        position: relative;
+        display: block;
+        width: 30px;
+        height: 25px;
+        /* 親がdisplay:flextだと、margin-left:autoで右側に寄せられる */
+        margin-left: auto;
+    }
+
+    #humburger span {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 2px;
+        background-color: #F23838;
+        transform: translateY(-50%);
+    }
+
+    #humburger::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: #F23838;
+    }
+
+    #humburger::after {
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 70%;
+        height: 2px;
+        background-color: #F23838;
+    }
+
+
+
+}
+
+/*for tablet*/
+@media screen and (min-width:768px) and (max-width:1024px) {
+    .sp_nav {
+        display: none;
+    }
+}
+
+/*for PC*/
+@media screen and (min-width:1024px) {
+    .sp_nav {
+        display: none;
+    }
+
+}
+
+
+
+.pc_nav {
+    margin-left: auto;
+}
+
+
+.pc_nav ul {
     margin-left: auto;
     display: flex;
 }
 
-header li{
+.pc_nav li {
     color: #F2778D;
-    font-weight: 600;
     margin-left: 20px;
     background-color: white;
 
 }
 
-header h1{
+header h1 {
     color: #07C7F2;
-    text-shadow: -1px 1px 0 rgba(255,255,255,1);
+    text-shadow: -1px 1px 0 rgba(255, 255, 255, 1);
     background-color: white;
-    
+    font-size: 1.6rem;
 }
 
 main {
     padding-left: 20%;
     padding-right: 20%;
     padding-bottom: 10%;
-    
+
 }
+
 a {
     text-decoration: none;
     color: inherit;
 }
+
 a:hover {
-    background-color: white;
-    color: #F23838;
+    //background-color: white;
+    //color: #F23838;
 }
+
 .profile {
     display: flex;
     min-height: 256px;
@@ -65,16 +179,43 @@ a:hover {
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
+
+/* dldtdd要素を横並びにする*/
+dl {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+dt {
+    width: 30%;
+    padding-bottom: 20px;
+    margin-bottom: 10px;
+}
+
+dd {
+    width: 70%;
+    padding-bottom: 20px;
+    margin-bottom: 10px;
+}
+
+.privacy {
+    filter: blur(4px);
+}
+
+
 @keyframes fuwafuwa {
     0% {
-        transform:translate(0, 0) rotate(-7deg);
-      }
-      50% {
-        transform:translate(0, -7px) rotate(0deg);
-      }
-      100% {
-        transform:translate(0, 0) rotate(7deg);
-      }
+        transform: translate(0, 0) rotate(-7deg);
+    }
+
+    50% {
+        transform: translate(0, -7px) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(0, 0) rotate(7deg);
+    }
 }
 
 .profile_image:hover {
@@ -90,19 +231,20 @@ a:hover {
     padding-top: 2em;
     padding-bottom: 2em;
 }
+
 .content {
     background-color: white;
 }
 
 
 .content_list {
-    border-bottom: 1px solid rgba(0,0,0,.2);
-    box-shadow: 0 1px 0 rgba(255,255,255,1);
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 1);
 }
 
 footer {
     background-color: #CCCCCC;
-    
+
 }
 
 .footer_container {
