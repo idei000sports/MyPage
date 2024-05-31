@@ -45,17 +45,15 @@ export default function Navbar() {
                         <ul>
                             <li><ListItem title="アバウト" href="/portfolio/about" /></li>
                             <li><ListItem title="ワークス" href="/portfolio/works" /></li>
-                            <li></li>
+                            <li><ListItem title="メモ" href="/portfolio/memo" /></li>
                         </ul>
                     </nav>
 
                     <nav className={`${style.sp_nav} ${toggle}`} onClick={onClickOpen}>
                         <ul>
-                            <li><ListItem title="About" href="/portfolio/about" /></li>
-                            <li><ListItem title="Works" href="/portfolio/works" /></li>
-                            <li><a href="#"></a></li>
-                            <li><a href="#"></a></li>
-                            <li></li>
+                            <li><h1><ListItem title="About" href="/portfolio/about" /></h1></li>
+                            <li><h1><ListItem title="Works" href="/portfolio/works" /></h1></li>
+                            <li><h1><ListItem title="メモ" href="/portfolio/memo" /></h1></li>
                         </ul>
                     </nav>
 

@@ -33,7 +33,7 @@ const images = [
         src: "/slide/dajare.png",
         title: "ダジャレ作成機",
         description: "母音からダジャレを作成",
-        href: "/dajre"
+        href: "/dajare"
     },
     {
         src: "/slide/dajare.png",
@@ -57,6 +57,7 @@ export default function Slide() {
                                 src={src}
                                 width={200}
                                 height={200}
+                                style={{objectFit: "cover"}}
                                 alt="Slider Image"
                                 sizes="(min-width: 1024px) 100vw, 60vw"
                                 className={styles.slideImage}

@@ -6,7 +6,7 @@ export default function Home() {
         <div className="container">
             <div className="row">
                 <div className="col" style={{ height: "100vh" }}>
-                    <a href="/portfolio">出射のホームページ</a>
+                    <a href="/portfolio"><h1>出射のホームページ</h1></a>
                 </div>
             </div>
         </div>

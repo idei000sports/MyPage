@@ -18,7 +18,7 @@ footer {
 .footer_container {
     padding-left: 20%;
     padding-right: 20%;
-    min-height: 200px;
+    min-height: 20px;
     display: flex;
     align-items: center;
 }

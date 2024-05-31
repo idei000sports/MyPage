@@ -8,7 +8,6 @@ import transformTextToBoin from "./transformTextToBoin"
 import { List } from './list';
 import { zengo } from './zengo';
 
-import  CommonHeader  from '../common/header'
 
 
 export default function Home() {
@@ -77,8 +76,7 @@ export default function Home() {
 
     return (
         <>
-            <CommonHeader/>
-            <div className="container" style={{ minHeight: "100vh" }}>
+            <div className="container" style={{ minHeight: "100vh", paddingTop: "2em" }}>
                 <div className="row">
                     <div className="col text-center">
                         <h2>ダジャレ作成機</h2>

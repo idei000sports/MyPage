@@ -1,14 +1,17 @@
 
+.image {
+
+}
+
 .slideImage {
   
-    aspect-ratio: 1/1;
-  object-fit: cover;
+
 
     
 }
 .mySwiper {
-  width: 600px;
-  height: 300px;
+  width: 30%;
+  height: 30%;
 }
 
 

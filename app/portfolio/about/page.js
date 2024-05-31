@@ -11,15 +11,23 @@ export default function About() {
                 <div>
                     <h2 className={styles.title}><span>アバウト</span></h2>
                 </div>
-                <dl className={styles.dl}>
-                    <div>
-                        <dt>
-                            aa
-                        </dt>
 
-                        <dd>aa</dd>
-                    </div>
-                </dl>
+                <div className={styles.container}>
+                    <dl className={styles.dl}>
+                        <div>
+                            <dt>名前</dt>
+                            <dd>出射</dd>
+                        </div>
+                        <div>
+                            <dt>名前</dt>
+                            <dd>出射</dd>
+                        </div>
+                        <div>
+                            <dt>名前</dt>
+                            <dd>出射</dd>
+                        </div>
+                    </dl>
+                </div>
             </main>
         </>
     );
