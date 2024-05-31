@@ -2,12 +2,9 @@
 @media screen and (max-width:768px) {
   html {
     font-size: 18px;
-    font-weight: 600;
+
   }
 
-  p {
-    font-weight: 600;
-  }
 
 }
 
@@ -15,12 +12,9 @@
 @media screen and (min-width:768px) and (max-width:1024px) {
   html {
     font-size: 18px;
-    font-weight: 600;
   }
 
-  p {
-    font-weight: 600;
-  }
+
 
 }
 
@@ -28,16 +22,38 @@
 @media screen and (min-width:1024px) {
   html {
     font-size: 18px;
-    font-weight: 600;
   }
 
-  p {
-    font-weight: 600;
-  }
+
 
 
 }
 
+h1, h2, h3, h4, h5 {
+  font-weight: 600;
+}
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 2em;
+}
+
+h3 {
+  font-size: 1.8em;
+}
+
+h4 {
+  font-size: 1.3em;
+}
+h5 {
+  font-size: 1em;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
 
 
 

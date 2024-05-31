@@ -1,0 +1,177 @@
+.navbar {
+    /*navbar本体*/
+
+    /* 前面に表示 */
+    z-index: 10;
+    /* 上部に固定 */
+    position: fixed;
+    width: 100%;
+}
+
+.container {
+    /* 中身を上下中央揃え */
+    display: flex;
+    align-items: center;
+}
+
+
+
+/*for SP*/
+@media screen and (max-width:768px) {
+
+
+.container {
+    padding-top: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+
+.pc_nav {
+    display: none;
+}
+
+.sp_nav {
+    /*https://rico-notes.com/programming/html/header-responsive/*/
+    /* スマホ用メニュー */
+    /*　前面に表示 */
+    z-index: 1;
+    /* 固定位置 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+
+    background: rgba(0, 0, 0, .5);
+    transition: all 2s ease-in-out;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sp_nav li {
+    color: #F2778D;
+    list-style: none;
+    font-weight: 600;
+}
+
+.hide {
+    display: none;
+}
+
+
+.humburger {
+    /* relative == 相対的な位置取りをする */
+    position: relative;
+    display: block;
+    width: 30px;
+    height: 25px;
+    /* 親がdisplay:flextだと、margin-left:autoで右側に寄せられる */
+    margin-left: auto;
+}
+
+.humburger span {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #F23838;
+    transform: translateY(-50%);
+}
+
+.humburger::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #F23838;
+}
+
+.humburger::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 70%;
+    height: 2px;
+    background-color: #F23838;
+}
+
+
+
+}
+
+/*for tablet*/
+@media screen and (min-width:768px) and (max-width:1024px) {
+    .navbar {
+        min-height: 100px;
+        padding-left: 20%;
+        padding-right: 20%;
+    }
+
+    .sp_nav {
+        display: none;
+    }
+}
+
+/*for PC*/
+@media screen and (min-width:1024px) {
+
+    .navbar {
+
+    }
+    .container {
+        min-height: 100px;
+        padding-left: 20%;
+        padding-right: 20%;
+    }
+
+    .sp_nav {
+        display: none;
+    }
+
+}
+
+
+.pc_nav {
+    margin-left: auto;
+}
+
+
+.pc_nav ul {
+    padding-left: 0;
+    margin-left: auto;
+    display: flex;
+}
+
+.pc_nav li {
+    font-weight: 600;
+    list-style: none;
+    color: #F2778D;
+    margin-left: 20px;
+    background-color: white;
+
+}
+
+
+
+.title {
+
+
+}
+.title a {
+    font-weight: 600;
+    color: #07C7F2;
+    text-shadow: -1px 1px 0 rgba(255, 255, 255, 1);
+    font-size: 1.5rem;
+    background-color: white;
+}
+

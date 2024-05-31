@@ -6,9 +6,11 @@ import style from "./style.css"
 export default function RootLayout({ children }) {
     return (
         <>
-            <Navbar/>
-            { children }
-            <Footer/>
+            <div>
+                <Navbar />
+                {children}
+                <Footer />
+            </div>
         </>
     );
-  }
+}

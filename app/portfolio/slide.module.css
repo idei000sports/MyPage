@@ -1,0 +1,23 @@
+
+.slideImage {
+  
+    aspect-ratio: 1/1;
+  object-fit: cover;
+
+    
+}
+.mySwiper {
+  width: 600px;
+  height: 300px;
+}
+
+
+.mySwiper_slide {
+  background-position: center;
+  background-size: cover;
+}
+
+.mySwiper_slide img {
+  display: block;
+  width: 100%;
+}

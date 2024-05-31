@@ -1,19 +1,20 @@
 "use client";
 
+import style from "./navbar.module.css"
 import Link from "next/link"
 import { motion } from "framer-motion"
 
-import {useState} from "react";
+import { useState } from "react";
 
 export default function Navbar() {
 
     const [isOpen, setIsOpen] = useState(true);
-    const [toggle, setToggle] = useState("hide");
+    const [toggle, setToggle] = useState(style.hide);
     const onClickOpen = () => {
         setIsOpen(!isOpen);
-        setToggle(isOpen ? "":"hide")
-        
-      }
+        setToggle(isOpen ? "" : style.hide)
+
+    }
 
     //アニメーションさせる
     const ListItem = ({ title, href }) => {
@@ -29,33 +30,52 @@ export default function Navbar() {
 
     return (
         <>
-            <header>
-                <motion.div
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                >
-                    <h1><Link href="/portfolio">出射ホームページ</Link></h1>
-                </motion.div>
-                <nav className="pc_nav">
-                    <ul>
-                        <li><ListItem title="About" href="/portfolio/about" /></li>
-                        <li><ListItem title="Works" href="/portfolio/works" /></li>
-                        <li></li>
-                    </ul>
-                </nav>
-                <nav className={`sp_nav ${toggle}`}  onClick={onClickOpen}>
-                    <ul>
-                        <li><ListItem title="About" href="/portfolio/about" /></li>
-                        <li><ListItem title="Works" href="/portfolio/works" /></li>
-                        <li><a href="#"></a></li>
-                        <li><a href="#"></a></li>
-                        <li></li>
-                    </ul>
-                </nav>
-                <div id="humburger" onClick={onClickOpen}>
-                    <span></span>
+            <header className={style.navbar}>
+                <div className={style.container}>
+                    <motion.div
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                    >
+                        <div className={style.title}>
+                            <Link href="/portfolio" ><h1>出射ホームページ</h1></Link>
+                        </div>
+
+                    </motion.div>
+                    <nav className={style.pc_nav}>
+                        <ul>
+                            <li><ListItem title="アバウト" href="/portfolio/about" /></li>
+                            <li><ListItem title="ワークス" href="/portfolio/works" /></li>
+                            <li></li>
+                        </ul>
+                    </nav>
+
+                    <nav className={`${style.sp_nav} ${toggle}`} onClick={onClickOpen}>
+                        <ul>
+                            <li><ListItem title="About" href="/portfolio/about" /></li>
+                            <li><ListItem title="Works" href="/portfolio/works" /></li>
+                            <li><a href="#"></a></li>
+                            <li><a href="#"></a></li>
+                            <li></li>
+                        </ul>
+                    </nav>
+
+                    <div className={style.humburger} onClick={onClickOpen}>
+                        <span></span>
+                    </div>
                 </div>
             </header>
         </>
     );
 }
+
+/*
+                <nav className={`${style.sp_nav} ${toggle}`}  onClick={onClickOpen}>
+                    <ul>
+                        <li><ListItem title="About" href="/portfolio/about" /></li>
+                        <li><ListItem title="Works" href="/portfolio/works" /></li>
+                        <li><a href="#"></a></li>
+                        <li><a href="#"></a></li>
+                        <li></li>
+                    </ul>
+                </nav>
+*/

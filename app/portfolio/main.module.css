@@ -1,0 +1,130 @@
+.main {
+
+    padding-bottom: 10%;
+
+}
+
+/*for SP*/
+@media screen and (max-width:768px) {
+
+    .main {
+        padding-top: 30%;
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+
+}
+
+/*for tablet*/
+@media screen and (min-width:768px) and (max-width:1024px) {
+    .main {
+        padding-top: 10%;
+        padding-left: 20%;
+        padding-right: 20%;
+    }
+}
+
+/*for PC*/
+@media screen and (min-width:1024px) {
+    .main {
+        padding-top: 10%;
+        padding-left: 20%;
+        padding-right: 20%;
+
+    }
+}
+
+
+.title {
+    text-align: center;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    color: #F2778D;
+}
+
+.title span {
+    background-color: white;
+}
+
+
+/* dldtdd要素を横並びにする*/
+.dl {
+
+    
+}
+.dl div {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    padding-top: 20px;
+
+}
+
+.dl dt {
+    width: 35%;
+
+}
+
+.dl dd {
+    width: 65%;
+
+}
+
+
+.profile {
+    display: flex;
+    min-height: 256px;
+    background-color: white;
+
+}
+
+.profile_text {
+    display: flex;
+    align-items: center;
+}
+
+.privacy {
+
+    filter: blur(4px);
+
+}
+
+
+.profile_h5 {
+    color: #A6A6A6
+}
+
+
+
+
+.profile_image {
+    flex-basis: 48%;
+    position: relative;
+    margin-left: auto;
+    display: block;
+    filter: grayscale(100%);
+    animation: fuwafuwa 3s ease-in-out infinite alternate;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.profile_image:hover {
+    animation: fuwafuwa 0.5s ease-in-out infinite alternate;
+}
+
+
+@keyframes fuwafuwa {
+    0% {
+        transform: translate(0, 0) rotate(-7deg);
+    }
+
+    50% {
+        transform: translate(0, -7px) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(0, 0) rotate(7deg);
+    }
+}
+
+
