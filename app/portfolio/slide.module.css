@@ -1,13 +1,39 @@
+.container {
+  padding-bottom: 2em;
+  width: 300px;
+  height: 300px;
+}
 
-.image {
+/*for SP*/
+@media screen and (max-width:768px) {
+  .container{
+    width: 200px;
+    height: 200px;
+  }
 
 }
 
+/*for tablet*/
+@media screen and (min-width:768px) and (max-width:1024px) {
+
+}
+
+/*for PC*/
+@media screen and (min-width:1024px) {
+
+
+
+}
+
+
+.image {
+  position: relative;
+  width: 80%;
+  height: 80%;
+}
+
 .slideImage {
-  
-
-
-    
+  object-fit: cover;
 }
 .mySwiper {
   width: 30%;

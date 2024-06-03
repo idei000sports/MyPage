@@ -49,19 +49,27 @@ export default function Slide() {
     const Content = ({ src, title, description, href }) => {
         return (
             <>
-                <div style={{ paddingBottom: "2em" }}>
+                <div className={styles.container}>
                     <Link href={href} >
                         <div className={styles.image}>
-                            
+
                             <Image
                                 src={src}
-                                width={200}
-                                height={200}
+                                fill
+                                className={styles.slideImage}
+                            />
+
+                            {/* 
+                                                        
+                                <Image
+                                src={src}
+                                width={150}
+                                height={150}
                                 style={{objectFit: "cover"}}
                                 alt="Slider Image"
                                 sizes="(min-width: 1024px) 100vw, 60vw"
                                 className={styles.slideImage}
-                            />
+                            />*/}
 
                         </div>
                         <h4>{title}</h4>
@@ -76,15 +84,27 @@ export default function Slide() {
 
     return (
         <>
-        
+
             <Swiper
                 // install Swiper modules
                 modules={[Autoplay, Navigation, Pagination, Scrollbar, A11y]}
                 //余白
                 spaceBetween={50}
                 //何枚表示するか
-                slidesPerView={3}
-
+                breakpoints={{
+                    // when window width is >= 320px
+                    320: {
+                        slidesPerView: 2,
+                    },
+                    // when window width is >= 480px
+                    480: {
+                        slidesPerView: 3,
+                    },
+                    // when window width is >= 640px
+                    640: {
+                        slidesPerView: 3,
+                    }
+                }}
                 //矢印の表示
                 //navigation
                 //下部の◯の表示
