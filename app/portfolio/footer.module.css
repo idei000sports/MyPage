@@ -1,0 +1,61 @@
+.footer {
+    background-color: #F2F0EB;
+    height: 250px;
+        /* 中身を上下中央揃え */
+    display: flex;
+    /*　上下中央 */
+    align-items: center;
+    /* 左右中央 */
+    justify-content: center;
+}
+.footer_container {
+
+}
+.footer_logo {
+    /* ブロック要素なのでこれで中央に来る*/
+    text-align: center;
+    color: #07C7F2;
+}
+.copylight {
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.8em;
+    color: #07C7F2;
+}
+
+.footer_nav {
+    /* ブロック要素なのでこれで中央へ*/
+    text-align: center;
+}
+.footer_nav ul {
+    /* 余白を削除 */
+    margin: 0 0 0 0;
+    padding: 0;
+}
+.footer_nav li {
+    list-style: none;
+    /* PCの場合は横並びにする */
+    display: inline-block;
+    padding: 20px;
+
+    font-weight: 600;
+    color: #F23838;
+}
+
+/*for SP*/
+@media screen and (max-width:768px) {
+
+    .footer_nav li {
+        /* スマホの場合はブロック要素にする */
+        display: block;
+        padding: 5px;
+    }
+}
+
+@media screen and (min-width:768px) and (max-width:1024px) {
+
+}
+
+/*for PC*/
+@media screen and (min-width:1024px) {
+}

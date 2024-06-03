@@ -1,6 +1,7 @@
 
 import styles from '../main.module.css'
 
+
 export default function Memo() {
 
     return (
@@ -15,6 +16,7 @@ export default function Memo() {
                     <p>
                         メモ置き場
                     </p>
+
                 </div>
             </main>
         </>

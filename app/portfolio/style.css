@@ -10,19 +10,3 @@
     box-shadow: 0 1px 0 rgba(255, 255, 255, 1);
 }
 
-footer {
-    background-color: #CCCCCC;
-
-}
-
-.footer_container {
-    padding-left: 20%;
-    padding-right: 20%;
-    min-height: 20px;
-    display: flex;
-    align-items: center;
-}
-
-.footer_items {
-    margin-right: auto;
-}

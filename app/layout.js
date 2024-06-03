@@ -2,8 +2,11 @@ import Script from 'next/script'
 import { Noto_Sans_JP } from 'next/font/google'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap-icons/font/bootstrap-icons.css'
+
 //bootstrapより後に呼び出す
 import "./globals.css";
+
+import ScrollTop from "./index_module/scrollTop";
 
 
 const notojp = Noto_Sans_JP({
@@ -23,6 +26,7 @@ export default function RootLayout({ children }) {
     <html lang="ja">
       <body className={notojp.className} style={{  backgroundColor: "#F8F8F8"}}>
           {children}
+          <ScrollTop />
       </body>
     </html>
   );

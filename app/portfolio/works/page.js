@@ -16,6 +16,21 @@ export default function Main() {
                     <h2 className={styles.title}><span>ワークス</span></h2>
                 </div>
                 <Cube></Cube>
+
+                <ul>
+                    <li>
+                        aaa
+                    </li>
+                    <li>
+                        aaa
+                    </li>
+                    <li>
+                        aaa
+                    </li>
+                    <li>
+                        aaa
+                    </li>
+                </ul>
             </main>
         </>
     );

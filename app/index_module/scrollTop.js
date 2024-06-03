@@ -1,5 +1,5 @@
 
-export default function scrollTop() {
+export default function ScrollTop() {
 
 
 
