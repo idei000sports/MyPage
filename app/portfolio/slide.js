@@ -49,35 +49,21 @@ export default function Slide() {
     const Content = ({ src, title, description, href }) => {
         return (
             <>
-                <div className={styles.container}>
-                    <Link href={href} >
-                        <div className={styles.image}>
-
-                            <Image
-                                src={src}
-                                fill
-                                className={styles.slideImage}
-                            />
-
-                            {/* 
-                                                        
-                                <Image
-                                src={src}
-                                width={150}
-                                height={150}
-                                style={{objectFit: "cover"}}
-                                alt="Slider Image"
-                                sizes="(min-width: 1024px) 100vw, 60vw"
-                                className={styles.slideImage}
-                            />*/}
-
-                        </div>
-                        <h4>{title}</h4>
-                        <h5>{description}</h5>
-
-                    </Link>
+                <Link href={href}>
+                <div className={styles.slide_container}>
+                    
+                    <div className={styles.slide_img}>
+                        <Image
+                            alt={"スライドバーの画像"}
+                            src={src}
+                            sizes={"50vw"}
+                            fill
+                        />
+                    </div>
+                    <h5>{title}</h5>
+                    <span>{description}</span>
                 </div>
-
+                </Link>
             </>
         )
     }
@@ -132,9 +118,3 @@ export default function Slide() {
         </>
     );
 }
-
-/*
-
-<Image src="/slide/dajare.png" style={{objectFit: "cover"}} alt={"me"} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" fill  priority={true}></Image>
-
-*/

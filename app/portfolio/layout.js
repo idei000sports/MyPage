@@ -1,5 +1,4 @@
 
-import Navbar from "./navbar"
 import Footer from "./footer"
 import Header from "./header";
 import style from "./style.css"

@@ -1,41 +1,58 @@
-.container {
-  padding-bottom: 4em;
-  width: 300px;
-  height: 300px;
+
+
+.slide_container{
+  display: grid;
+
+  height: 100%;
+  width: 100%;
+  /* 操作部分と被らないように*/
+  padding-bottom: 2em;
 }
+.slide_img{
+  /* 親要素はrelativeにして、heightとwidthをもたせる必要がある*/
+  position: relative;
+
+  /*　アスペクト比を1対1に */
+  aspect-ratio: 1/1;
+  width: 100%;
+
+  /* 画像を真ん中に */
+  justify-self: center;
+
+  
+}
+
+.slide_img img {
+  filter: grayscale(100%);
+  object-fit: cover;
+}
+
+
+.slide_container span{
+  /* align-self: end; */
+  justify-self: end;
+}
+
 
 /*for SP*/
 @media screen and (max-width:768px) {
-  .container{
-    width: 200px;
-    height: 200px;
-  }
+
 
 }
 
 /*for tablet*/
 @media screen and (min-width:768px) and (max-width:1024px) {
 
+ 
 }
 
 /*for PC*/
 @media screen and (min-width:1024px) {
 
 
-
 }
 
 
-.image {
-  position: relative;
-  width: 80%;
-  height: 80%;
-}
-
-.slideImage {
-  filter: grayscale(100%);
-  object-fit: cover;
-}
 .mySwiper {
   width: 30%;
   height: 30%;

@@ -130,7 +130,7 @@
 
 /*for tablet*/
 @media screen and (min-width:768px) and (max-width:1024px) {
-    .navbar {
+    .header {
         min-height: 100px;
         padding-left: 20%;
         padding-right: 20%;
