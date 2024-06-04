@@ -12,7 +12,7 @@ export default function Home() {
     const Map = React.useMemo(
         () =>
             dynamic(() => import("./map"), {
-                loading: () => <main><p>A map is loading</p></main>,
+                loading: () => <main><p>地図読込中...</p></main>,
                 ssr: false
             }),
         []
@@ -22,16 +22,18 @@ export default function Home() {
     const { data: origins } = useSWR('/api/origin', fetcher)
     const { data: cities } = useSWR('/api/county', fetcher)
 
-    if (!origins || !cities) return <main><div>読み込み中...</div></main>;
+    if (!origins || !cities) return <main><div>データベース読込中...</div></main>;
 
 
 
 
     return (
         <>
+            <main>
             <div className="container" style={{paddingTop: "2em"}}>
                 <Map origins={origins} cities={cities}/>
             </div>
+            </main>
         </>
     )
 }
