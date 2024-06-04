@@ -27,7 +27,7 @@ export default function About() {
                             </div>
                             <div>
                                 <dt>スキル</dt>
-                                <dd>JavaScript, Node.js, React, Next.js 等 </dd>
+                                <dd>JavaScript, Node.js, React, Next.js, Java, Servlet/JSP, Spring,  </dd>
                             </div>
                             <div>
                                 <dt></dt>

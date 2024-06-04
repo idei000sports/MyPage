@@ -1,0 +1,172 @@
+.header {
+    /* グリッドレイアウトにする */
+    display: grid;
+    /* |幅が自動で変わる部分|　 | */
+    grid-template-columns: auto 1fr;
+    column-gap: 20px;
+
+    /* 前面に表示 */
+    z-index: 10;
+    /* 上部に固定 */
+    position: fixed;
+    width: 100%;
+}
+
+.humburger {
+    justify-self: end;
+    color: #F2778D;
+    font-size: 2em;
+}
+
+.logo {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+
+    font-weight: 600;
+    color: #07C7F2;
+    text-shadow: -1px 1px 0 rgba(255, 255, 255, 1);
+    font-size: 1.5rem;
+
+}
+
+.logo a {
+    background-color: white;
+}
+.pc_nav ul {
+    display: grid;
+
+    /* 子要素を均一の幅で表示する */
+    grid-auto-columns: 1fr;
+    /* 子要素を横並びにする */
+    grid-auto-flow: column;
+    column-gap: 2px;
+    justify-self: end;
+    width: 100%;
+    max-width: 800px;
+    height: 100%;
+
+
+}
+.pc_nav li {
+    display: grid;
+    align-items: center;
+    justify-content: end;
+    height: 100%;
+    font-weight: 600;
+    list-style: none;
+    color: #F2778D;
+
+}
+.pc_nav li a {
+    background-color: white;
+}
+
+.sp_nav {
+    /*https://rico-notes.com/programming/html/header-responsive/*/
+    /* スマホ用メニュー */
+    /*　前面に表示 */
+    z-index: 1;
+    /* 固定位置 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+
+    background: rgba(0, 0, 0, .5);
+    transition: all 2s ease-in-out;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* 背景ぼかす　*/
+    backdrop-filter: blur(12px);
+}
+.sp_nav ul {
+    list-style:none;
+    margin: 0 0 30px 0;
+    padding:  0;
+    text-align: center;
+}
+
+.sp_nav li {
+    color: #F2778D;
+    list-style: none;
+    font-weight: 600;
+    margin-left: 0;
+    font-size: 2em;
+}
+
+
+
+
+/*for SP*/
+@media screen and (max-width:768px) {
+
+    .header {
+        padding-top: 5%;
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+
+    .pc_nav {
+        display: none;
+    }
+
+
+    .hide {
+        display: none;
+    }
+
+
+
+
+}
+
+
+
+/*for tablet*/
+@media screen and (min-width:768px) and (max-width:1024px) {
+    .navbar {
+        min-height: 100px;
+        padding-left: 20%;
+        padding-right: 20%;
+    }
+
+    .sp_nav {
+        display: none;
+    }
+
+    .humburger {
+        display:none;
+    }
+
+}
+
+/*for PC*/
+@media screen and (min-width:1024px) {
+
+    .navbar {}
+
+    .header {
+        min-height: 100px;
+        padding-left: 20%;
+        padding-right: 20%;
+    }
+
+    .sp_nav {
+        display: none;
+    }
+
+    .humburger {
+        display:none;
+    }
+
+
+}
+
+
+
