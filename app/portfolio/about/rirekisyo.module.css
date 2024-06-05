@@ -25,7 +25,7 @@
 
 .grid_name_and_face{
     display:grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr 1fr 0.5fr 2fr;
 }
 
 .grid_name{
@@ -76,11 +76,19 @@
 }
 
 .顔写真{
+    height: 100%;
+    width: 100%;
+    position: relative;
     border-left: solid;
     border-right: solid;
     
     grid-column: 4/5;
     grid-row: 1/4;
+}
+
+.profile_image {
+    filter: grayscale(100%);
+    object-fit: cover;
 }
 
 

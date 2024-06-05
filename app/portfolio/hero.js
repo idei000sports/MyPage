@@ -19,8 +19,6 @@ export default function Hero() {
             <div className={styles.profile_image_container}>
                 {/* objectFitをCSSでつけておくと、比率が維持できるっぽい*/}
                 <Image src="/top/me_ver2.jpg" className={styles.profile_image}  fill />
-
-                <h1>aaa</h1>
             </div>
         </div>
         </>

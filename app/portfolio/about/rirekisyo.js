@@ -21,7 +21,9 @@ export default function Rirekisyo() {
                         <div className={styles.男女}>男</div>
                         <div className={styles.枠名_生年月日}>生年月日</div>
                         <div className={styles.生年月日}>平成4年10月28日(満31歳)</div>
-                        <div className={styles.顔写真}>顔写真</div>
+                        <div className={styles.顔写真}>
+                            <Image src="/top/me_ver2.jpg" className={styles.profile_image}  fill />
+                        </div>
                     </div>
 
                     <div className={styles.address}>
