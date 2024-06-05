@@ -117,7 +117,7 @@ export default function Rirekisyo() {
 
                     <div className={styles.hope}>
                         <div className={styles.枠名_本人希望記入欄}>本人希望記入欄</div>
-                        <div className={styles.本人希望記入欄}>ああああああ</div>
+                        <div className={styles.本人希望記入欄}>あああああああｓｆさふぁ</div>
                     </div>
                 </div>
 
