@@ -1,3 +1,5 @@
+/*
+
 .container {
     height: 100vh;
     background-color: red;
@@ -8,3 +10,22 @@
     align-self: center;
     justify-self: center;
   }
+*/
+
+
+
+.gatter_container{
+  display: grid;
+  grid-template-columns: repeat( auto-fill, minmax(200px,1fr) ) ;
+}
+
+.gatter_item1{
+
+}
+.gatter_item2{
+
+}
+
+.gatter_item3{
+
+}

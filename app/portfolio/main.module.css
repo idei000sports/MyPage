@@ -33,7 +33,7 @@
     padding-top: 8em;
     padding-left: 20%;
     padding-right: 20%;
-    height: 100vh;
+    min-height: 100vh;
 
     background-color: #F8F8F8;
     display: grid;
@@ -51,6 +51,11 @@
         padding-left: 5%;
         padding-right: 5%;
     }
+    .subpage_section {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
 }
 
 

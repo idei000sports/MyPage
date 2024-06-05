@@ -7,10 +7,9 @@ export default function About() {
     return (
         <>
             <main className={styles.main}>
+                
                 <section className={styles.subpage_section}>
-                    <div className={styles.subpage_container}>
-                        <Rirekisyo />
-                    </div>
+                    <Rirekisyo />
 
                 </section>
             </main>
