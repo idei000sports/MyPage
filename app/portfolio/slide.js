@@ -20,7 +20,7 @@ const images = [
     {
         src: "/slide/dajare.png",
         title: "ダジャレ作成機",
-        description: "母音からダジャレを作成",
+        description: "母音からダジャレを考える",
         href: "/dajare"
     },
     {
@@ -28,19 +28,7 @@ const images = [
         title: "地図",
         description: "結成地の地図",
         href: "/map"
-    },
-    {
-        src: "/slide/dajare.png",
-        title: "ダジャレ作成機",
-        description: "母音からダジャレを作成",
-        href: "/dajare"
-    },
-    {
-        src: "/slide/dajare.png",
-        title: "ダジャレ作成機",
-        description: "母音からダジャレを作成",
-        href: "/dajare"
-    },
+    }
 ];
 
 
@@ -50,19 +38,21 @@ export default function Slide() {
         return (
             <>
                 <Link href={href}>
-                <div className={styles.slide_container}>
-                    
-                    <div className={styles.slide_img}>
-                        <Image
-                            alt={"スライドバーの画像"}
-                            src={src}
-                            sizes={"50vw"}
-                            fill
-                        />
+                    <div className={styles.slide_container}>
+
+                        <div className={styles.slide_img}>
+                            <Image
+                                alt={"スライドバーの画像"}
+                                src={src}
+                                sizes={"50vw"}
+                                fill
+                            />
+                        </div>
+                        <div className={styles.slide_text}>
+                            <h5>[{title}]</h5>
+                            <p>{description}</p>
+                        </div>
                     </div>
-                    <h5>{title}</h5>
-                    <span>{description}</span>
-                </div>
                 </Link>
             </>
         )
@@ -72,6 +62,7 @@ export default function Slide() {
         <>
 
             <Swiper
+                className={styles.swiper}
                 // install Swiper modules
                 modules={[Autoplay, Navigation, Pagination, Scrollbar, A11y]}
                 //余白

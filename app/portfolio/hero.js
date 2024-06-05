@@ -4,6 +4,8 @@ import Image from 'next/image'
 
 export default function Hero() {
     return (
+
+        <>
         <div className={styles.profile}>
             <div className={styles.profile_text}>
                 <div>
@@ -14,11 +16,14 @@ export default function Hero() {
                     <h4 className={styles.privacy}>大阪府</h4>
                 </div>
             </div>
-            <div className={styles.profile_image}>
+            <div className={styles.profile_image_container}>
                 {/* objectFitをCSSでつけておくと、比率が維持できるっぽい*/}
-                <Image src="/top/me_ver2.jpg" style={{ objectFit: "cover" }} alt={"me"} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" fill priority={true} />
+                <Image src="/top/me_ver2.jpg" className={styles.profile_image}  fill />
+
+                <h1>aaa</h1>
             </div>
         </div>
+        </>
     )
 
 }

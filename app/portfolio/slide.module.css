@@ -3,10 +3,11 @@
 .slide_container{
   display: grid;
 
-  height: 100%;
-  width: 100%;
+  height: 90%;
+  width: 90%;
   /* 操作部分と被らないように*/
-  padding-bottom: 2em;
+  margin-bottom: 2em;
+  background-color: white;
 }
 .slide_img{
   /* 親要素はrelativeにして、heightとwidthをもたせる必要がある*/
@@ -18,6 +19,8 @@
 
   /* 画像を真ん中に */
   justify-self: center;
+  border: solid;
+  box-shadow: 5px 5px 0px #F2778D;
 
   
 }
@@ -28,11 +31,21 @@
 }
 
 
-.slide_container span{
-  /* align-self: end; */
-  justify-self: end;
+
+
+.slide_text {
+  margin-top: 1em;
+  color: black;
+ 
+
 }
 
+.slide_text h5 {
+
+}
+.slide_text p{
+  font-size: 0.8em;
+}
 
 /*for SP*/
 @media screen and (max-width:768px) {

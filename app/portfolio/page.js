@@ -16,12 +16,16 @@ export default function Main() {
 
             <main className={styles.main}>
                 <div className={styles.container}>
-                    <Hero />
+                    <div className={styles.behind}>
+                        <Hero />
+                    </div>
 
-
-                    <h2 className={styles.title}><span>Contents</span></h2>
-                    <Slide />
-
+                    <div className={styles.front}>
+                        <section>
+                            <h2 className={styles.title}><span>コンテンツ</span></h2>
+                            <Slide />
+                        </section>
+                    </div>
                 </div>
             </main>
         </>
