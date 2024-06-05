@@ -1,10 +1,7 @@
 
 import styles from './main.module.css'
-import Image from 'next/image'
-import Link from "next/link"
 
 import Slide from "./slide"
-import Cube from "./cube"
 import Hero from "./hero"
 
 export default function Main() {
@@ -21,7 +18,7 @@ export default function Main() {
                     </div>
 
                     <div className={styles.front}>
-                        <section>
+                        <section className={styles.section}>
                             <h2 className={styles.title}><span>コンテンツ</span></h2>
                             <Slide />
                         </section>

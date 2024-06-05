@@ -1,0 +1,10 @@
+.container {
+    height: 100vh;
+    background-color: red;
+    display: grid;
+  }
+  .item {
+    background-color: aqua;
+    align-self: center;
+    justify-self: center;
+  }

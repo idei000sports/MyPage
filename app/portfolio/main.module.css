@@ -2,6 +2,7 @@
 }
 
 
+
 .behind {
     height: 100vh;
     width: 100%;
@@ -17,18 +18,41 @@
 }
 .front {
     padding-top: 100vh;
+
+    border-bottom: solid black;
 }
 
-.front section{
+
+.section{
     padding-left: 20%;
     padding-right: 20%;
     height: 100vh;
     background-color: #F8F8F8;
-    border-top: solid black;
-    border-bottom: solid black;
-
-
 }
+.subpage_section {
+    padding-top: 8em;
+    padding-left: 20%;
+    padding-right: 20%;
+    height: 100vh;
+
+    background-color: #F8F8F8;
+    display: grid;
+}
+.subpage_container {
+    width: 100%;
+    align-self: center;
+    justify-self: center;
+}
+
+
+@media screen and (max-width:768px) {
+	/* 480px以下に適用されるCSS（スマホ用） */
+    .front section{
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+}
+
 
 
 .title {
